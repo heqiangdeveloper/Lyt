@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/activity_modify_psd_title"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="原密码"
+                android:gravity="center"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/old_psd_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="请输入原密码"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="新密码"
+                android:gravity="center"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/new_psd_tv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="请输入新密码"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="密码确认"
+                android:gravity="center"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/new_psd_tv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="请再次输入新密码"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/commit_bt"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="完成"
+            android:textColor="#CECECE"
+            android:textSize="18sp"
+            android:layout_marginLeft="@dimen/modify_psd_btn_margin"
+            android:layout_marginRight="@dimen/modify_psd_btn_margin"
+            android:background="@drawable/shape_modify_psd_button_off"
+            android:layout_marginBottom="1dp"/>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

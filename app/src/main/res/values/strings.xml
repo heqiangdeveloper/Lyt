@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">粮易通</string>
+    <string name="message_dialog_is_opend">标为已读</string>
+    <string name="message_dialog_not_opend">标为未读</string>
+    <string name="message_dialog_remove">移除</string>
+    <string name="message_top_category_label_open">∧</string>
+    <string name="message_top_category_label_close">∨</string>
+    <string name="barge_detail_title">驳船详情</string>
+    <string name="barge_add_title">新增驳船</string>
+    <string name="settings_title">设置</string>
+    <string name="my_info_title">完善资料</string>
+    <string name="my_info_popup_title">请保持上传照片字迹清晰，无遮拦，无反光。</string>
+    <string name="take_photo">拍照</string>
+    <string name="upload_photo">上传图片</string>
+    <string name="cancel">取消</string>
+</resources>
