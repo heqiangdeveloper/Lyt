@@ -1,10 +1,5 @@
 package com.cimcitech.lyt.activity.bargemanage;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,23 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.chaychan.library.BottomBarItem;
-import com.chaychan.library.BottomBarLayout;
 import com.cimcitech.lyt.R;
-import com.cimcitech.lyt.activity.message.MessageFragment;
-import com.cimcitech.lyt.task.OnTaskFinishedListener;
-import com.cimcitech.lyt.task.message.QueryUnReadMessageTask;
-import com.cimcitech.lyt.utils.DataGenerator;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.jpush.android.api.JPushInterface;
 
 
 public class BargeDetailActivity extends AppCompatActivity {
