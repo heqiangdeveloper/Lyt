@@ -99,7 +99,7 @@ public class UserFragment extends Fragment {
 
     private void getUserInfo() {
         //userName_Tv.setText(Config.userName);
-        userName_Tv.setText(sp.getString("user_name", ""));
+        userName_Tv.setText(Config.USERNAME );
     }
 
     @Override
@@ -109,7 +109,6 @@ public class UserFragment extends Fragment {
         sp = getActivity().getSharedPreferences(Config.KEY_LOGIN_AUTO, MODE_PRIVATE);
         getUserInfo();
         //getData();
-
 
         return view;
     }
@@ -140,6 +139,7 @@ public class UserFragment extends Fragment {
                 break;
             case R.id.settings_tv://设置
                 startActivity(new Intent(getActivity(),SettingsActivity.class));
+                //getActivity().finish();
                 break;
         }
     }
@@ -254,29 +254,6 @@ public class UserFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
-    }
-
-    public void getData() {
-        OkHttpUtils
-                .post()
-                .url(Config.updateApk)
-                .addHeader("checkTokenKey", Config.loginback.getToken())
-                .addHeader("sessionKey", Config.loginback.getUserId() + "")
-                .build()
-                .execute(
-                        new StringCallback() {
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                //ToastUtil.showNetError();
-                            }
-
-                            @Override
-                            public void onResponse(String response, int id) {
-                                //ToastUtil.showToast(response);
-                                apkUpdateVo = GjsonUtil.parseJsonWithGson(response, ApkUpdateVo.class);
-                            }
-                        }
-                );
     }
 
 }

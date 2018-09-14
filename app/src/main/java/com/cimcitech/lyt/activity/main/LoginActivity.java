@@ -47,6 +47,8 @@ public class LoginActivity extends BaseActivity {
 
     private String afterencrypt = null;
 
+    //17620465675  12345678 或13058015322  123
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,17 +71,21 @@ public class LoginActivity extends BaseActivity {
                     loginBtnOff();
                 }
                 if(userNameTv.getText().toString().trim().length() != 0 &&
-                        sp.getString("user_name", "").length() != 0 &&
-                        userNameTv.getText().toString().trim().equals(sp.getString("user_name", ""))){
+                        sp.getString("accountNo", "").length() != 0 &&
+                        userNameTv.getText().toString().trim().equals(sp.getString("accountNo", ""))){
                     welcome_Tv1.setVisibility(View.VISIBLE);
                     welcome_Tv2.setVisibility(View.VISIBLE);
-                    welcome_Tv1.setText("Hello!  " + sp.getString("user_name", ""));
+                    welcome_Tv1.setText("Hello!  " + sp.getString("userName", ""));
                     welcome_Tv2.setText("欢迎回来");
                 }else{
                     welcome_Tv1.setVisibility(View.INVISIBLE);
                     welcome_Tv2.setVisibility(View.VISIBLE);
-                    welcome_Tv2.setText("欢迎使用管理平台");
+                    welcome_Tv2.setText("欢迎使用粮易通");
                 }
+
+                //暂时不要welcome1,welcome2
+                welcome_Tv1.setVisibility(View.GONE);
+                welcome_Tv2.setVisibility(View.GONE);
             }
 
             @Override
@@ -109,17 +115,23 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+        String accountNo = sp.getString("accountNo","");
+        String password = sp.getString("password","");
+        int  accountId = sp.getInt("accountId",0);
+        String token = sp.getString("token","");
+        String userName = sp.getString("userName","");
+        int accountType = sp.getInt("accountType",-1);
+
         //如果是已登录过的，直接跳过登录界面
-        if(sp.getString("user_name","").length() != 0 &&
-                sp.getString("password","").length() != 0 &&
-                sp.getString("realName","").length() != 0 &&
-                sp.getLong("userId",0) != 0){
+        if(accountNo.length() != 0 && password.length() != 0 &&  accountId != 0 &&
+                token.length() != 0 && userName.length() != 0 && accountType != -1){
+            saveConfigs(accountNo,accountId,userName,token, accountType);
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         }else{
-            if (sp.getString("user_name", "") != "") {
-                userNameTv.setText(sp.getString("user_name", ""));
+            if (accountNo != "") {
+                userNameTv.setText(accountNo);
             }else{
                 userNameTv.setText("");
             }
@@ -130,6 +142,11 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
+    //launchMode为singleTask的时候，通过Intent启到一个Activity,如果系统已经存在一个实例，系统就会将请求
+    // 发送到这个实例上，但这个时候，系统就不会再调用通常情况下我们处理请求数据的onCreate方法，而是调用
+    // onNewIntent方法，
+    //不要忘记，系统可能会随时杀掉后台运行的Activity，如果这一切发生，那么系统就会调用onCreate方法，而
+    // 不调用onNewIntent方法，一个好的解决方法就是在onCreate和onNewIntent方法中调用同一个处理数据的方法
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
@@ -149,17 +166,21 @@ public class LoginActivity extends BaseActivity {
                     loginBtnOff();
                 }
                 if(userNameTv.getText().toString().trim().length() != 0 &&
-                        sp.getString("user_name", "").length() != 0 &&
-                        userNameTv.getText().toString().trim().equals(sp.getString("user_name", ""))){
+                        sp.getString("accountNo", "").length() != 0 &&
+                        userNameTv.getText().toString().trim().equals(sp.getString("accountNo", ""))){
                     welcome_Tv1.setVisibility(View.VISIBLE);
                     welcome_Tv2.setVisibility(View.VISIBLE);
-                    welcome_Tv1.setText("Hello!  " + sp.getString("user_name", ""));
+                    welcome_Tv1.setText("Hello!  " + sp.getString("accountNo", ""));
                     welcome_Tv2.setText("欢迎回来");
                 }else{
                     welcome_Tv1.setVisibility(View.INVISIBLE);
                     welcome_Tv2.setVisibility(View.VISIBLE);
-                    welcome_Tv2.setText("欢迎使用管理平台");
+                    welcome_Tv2.setText("欢迎使用粮易通");
                 }
+
+                //暂时不要welcome1,welcome2
+                welcome_Tv1.setVisibility(View.GONE);
+                welcome_Tv2.setVisibility(View.GONE);
             }
 
             @Override
@@ -190,16 +211,22 @@ public class LoginActivity extends BaseActivity {
         });
 
         //如果是已登录过的，直接跳过登录界面
-        if(sp.getString("user_name","").length() != 0 &&
-                sp.getString("password","").length() != 0 &&
-                sp.getString("realName","").length() != 0 &&
-                sp.getLong("userId",0) != 0){
+        String accountNo = sp.getString("accountNo","");
+        String password = sp.getString("password","");
+        int  accountId = sp.getInt("accountId",0);
+        String token = sp.getString("token","");
+        String userName = sp.getString("userName","");
+        int accountType = sp.getInt("accountType",-1);
+
+        //如果是已登录过的，直接跳过登录界面
+        if(accountNo.length() != 0 && password.length() != 0 &&  accountId != 0 &&
+                token.length() != 0 && userName.length() != 0 && accountType != -1){
             Intent intent2 = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent2);
             finish();
         }else{
-            if (sp.getString("user_name", "") != "") {
-                userNameTv.setText(sp.getString("user_name", ""));
+            if (sp.getString("accountNo", "") != "") {
+                userNameTv.setText(sp.getString("accountNo", ""));
             }else{
                 userNameTv.setText("");
             }
@@ -232,6 +259,7 @@ public class LoginActivity extends BaseActivity {
     @OnClick({R.id.clear_name_iv, R.id.clear_password_iv,R.id.forget_psd_tv,R.id.login_bt,R.id
             .new_user_tv})
     public void onclick(View v) {
+        Intent i = new Intent(LoginActivity.this,RegisterActivity.class);
         switch (v.getId()) {
             case R.id.clear_name_iv:
                 userNameTv.setText("");
@@ -239,91 +267,99 @@ public class LoginActivity extends BaseActivity {
             case R.id.clear_password_iv:
                 passwordTv.setText("");
                 break;
-            case R.id.forget_psd_tv:
+            case R.id.forget_psd_tv://忘记密码
+                i.putExtra("type","Forget");
+                startActivity(i);
                 break;
             case R.id.new_user_tv://新用户注册
-                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
-                //finish();
+                i.putExtra("type","New");
+                startActivity(i);
                 break;
             case R.id.login_bt:
-                //mLoading.show();
-//                if(loginBt.isClickable()){
-//                    mLoginDialog.show();
-//                    getData();
-//                }
-                startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                finish();
+                if(loginBt.isClickable()){
+                    mLoginDialog.show();
+                    getData();
+                }
                 break;
         }
     }
 
     public void getData() {
-        String psw = passwordTv.getText().toString().trim();
-        try
-        {
-            afterencrypt = RSAUtils.encrypt(psw,Config.PUBLIC_KEY);//加密后的密码
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this,"rsa 加密失败！！",Toast.LENGTH_SHORT).show();
-        }
-        if(null != afterencrypt){
-            Log.d("loginlog","afterencrypt is: " + afterencrypt);
-            OkHttpUtils
-                    .post()
-                    .url(Config.USER_LOGIN_URL)
-                    .addParams("userName", userNameTv.getText().toString().trim())
-                    .addParams("password", afterencrypt)
-                    .build()
-                    .execute(
-                            new StringCallback() {
-                                @Override
-                                public void onError(Call call, Exception e, int id) {
-                                    //ToastUtil.showNetError();
-                                    Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
-                                    Log.d("heqlogin","error is: " + e);
-                                    mLoginDialog.dismiss();
-                                }
-
-                                @Override
-                                public void onResponse(String response, int id) {
-                                    Log.d("heqlogin",response);
-                                    try {
-                                        loginVo = GjsonUtil.parseJsonWithGson(response, LoginVo.class);
-                                        if (loginVo != null) {
-                                            Toast.makeText(LoginActivity.this, loginVo.getMsg(), Toast
-                                                    .LENGTH_SHORT).show();
-                                            if (loginVo.isSuccess()) {
-                                                saveUserInfo();
-//                                                Config.userName = userNameTv.getText().toString().trim();
-//                                                Config.realName = loginVo.getData().getRealname();
-//                                                Config.password = passwordTv.getText().toString().trim();
-//                                                Config.userId = loginVo.getData().getUserId();
-                                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                                startActivity(intent);
-                                                finish();
-                                            }
-                                        } else {
-                                           // ToastUtil.showToast("登录失败");
-                                        }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                    mLoginDialog.dismiss();
-                                }
+        final String psw = passwordTv.getText().toString().trim();
+//        try
+//        {
+//            afterencrypt = RSAUtils.encrypt(psw,Config.PUBLIC_KEY);//加密后的密码
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            Toast.makeText(this,"rsa 加密失败！！",Toast.LENGTH_SHORT).show();
+//        }
+        OkHttpUtils
+                .post()
+                .url(Config.USER_LOGIN_URL)
+                .addParams("accountno", userNameTv.getText().toString().trim())
+                .addParams("password", psw)
+                .build()
+                .execute(
+                        new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
+                                mLoginDialog.dismiss();
+                                Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
                             }
-                    );
-        }
+
+                            @Override
+                            public void onResponse(String response, int id) {
+                                try {
+                                    loginVo = GjsonUtil.parseJsonWithGson(response, LoginVo.class);
+                                    if (loginVo != null) {
+                                        if (loginVo.isSuccess()) {
+                                            String accountNo = loginVo.getData().getAccountNo();
+                                            int accountId = loginVo.getData().getAccountId();
+                                            String password = psw;
+                                            String userName = loginVo.getData().getUserName();
+                                            int accountType = loginVo.getData().getAccountType();
+                                            String token = loginVo.getData().getToken();
+                                            saveUserInfo(accountNo,accountId,password,userName,token,accountType);
+                                            saveConfigs(accountNo,accountId,userName,token, accountType);
+
+                                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                mLoginDialog.dismiss();
+                            }
+                        }
+                );
     }
 
     /***
      * 保存账户与密码
      */
-    private void saveUserInfo() {
+    private void saveUserInfo(String accountNo,int accountId,String password,String userName,
+                              String token,int accountType) {
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString("user_name", userNameTv.getText().toString().trim());
-        editor.putString("password", afterencrypt);
-//        editor.putString("realName", loginVo.getData().getRealname());
-//        editor.putLong("userId", loginVo.getData().getUserId());
+        editor.putString("accountNo", accountNo);
+        editor.putInt("accountId", accountId);
+        editor.putString("password", password);
+        editor.putString("userName",userName);
+        editor.putString("token",token);
+        editor.putInt("accountType", accountType);
         editor.commit();
+    }
+
+    //保存全局变量
+    private void saveConfigs(String accountNo,int accountId,String userName,String token,
+                             int accountType){
+        Config.USERNAME = userName;
+        Config.ACCOUNTID = accountId;
+        Config.ACCOUNTNO = accountNo;
+        Config.ACCOUNTTYPE = accountType;
+        Config.TOKEN = token;
     }
 }

@@ -14,16 +14,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/jobNum_tv"
+            <ImageView
+                android:id="@+id/pic_iv"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:textColor="@color/white"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
-                android:textSize="@dimen/main_text_size"
-                android:background="@mipmap/green_circle"
-                android:text="工号"/>
+                android:src="@mipmap/boat48"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +44,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/custName_tv"
+                        android:id="@+id/bargename_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="left"
@@ -71,7 +68,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/machineNum_tv"
+                        android:id="@+id/nationality_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="left"
@@ -94,11 +91,11 @@
                     android:layout_weight="1"
                     android:orientation="horizontal">
                     <TextView
-                        android:id="@+id/serialNum_tv"
+                        android:id="@+id/deadweightton_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="left"
-                        android:text="吨位：123"
+                        android:text="xxxxxxx吨位"
                         android:textColor="@color/black"
                         android:textSize="@dimen/main_text_size" />
                 </LinearLayout>

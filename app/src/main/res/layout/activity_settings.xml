@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:padding="15dip"
                 android:text="清除缓存"
-                android:textColor="@color/black"
+                android:textColor="@color/black_33"
                 android:textSize="@dimen/main_text_size" />
 
             <TextView
@@ -48,7 +48,7 @@
             android:drawableRight="@mipmap/more_icon"
             android:padding="15dip"
             android:text="修改密码"
-            android:textColor="@color/black"
+            android:textColor="@color/black_33"
             android:textSize="@dimen/main_text_size" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:drawableRight="@mipmap/more_icon"
             android:padding="15dip"
             android:text="用户协议"
-            android:textColor="@color/black"
+            android:textColor="@color/black_33"
             android:textSize="@dimen/main_text_size" />
 
         <TextView
@@ -72,7 +72,7 @@
             android:drawableRight="@mipmap/more_icon"
             android:padding="15dip"
             android:text="服务协议"
-            android:textColor="@color/black"
+            android:textColor="@color/black_33"
             android:textSize="@dimen/main_text_size" />
 
         <TextView
@@ -84,7 +84,7 @@
             android:drawableRight="@mipmap/more_icon"
             android:padding="15dip"
             android:text="关于"
-            android:textColor="@color/black"
+            android:textColor="@color/black_33"
             android:textSize="@dimen/main_text_size" />
 
         <TextView
@@ -96,7 +96,7 @@
             android:drawableRight="@mipmap/more_icon"
             android:padding="15dip"
             android:text="版本检查"
-            android:textColor="@color/black"
+            android:textColor="@color/black_33"
             android:textSize="@dimen/main_text_size" />
 
         <TextView

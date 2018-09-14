@@ -22,6 +22,7 @@ import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
 import com.cimcitech.lyt.R;
 import com.cimcitech.lyt.activity.message.MessageFragment;
+import com.cimcitech.lyt.activity.user.SettingsActivity;
 import com.cimcitech.lyt.task.OnTaskFinishedListener;
 import com.cimcitech.lyt.task.message.QueryUnReadMessageTask;
 import com.cimcitech.lyt.utils.DataGenerator;
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
     public void registRefreshReceiver(){
         filter = new IntentFilter();
         filter.addAction(MessageFragment.REFRESH_UNREADMSG_BROADCAST);
+        filter.addAction(SettingsActivity.CALL_FINISH);
         LocalBroadcastManager.getInstance(MainActivity.this).registerReceiver(refreshReceiver,filter);
     }
 
@@ -92,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             if(intent.getAction().equals(MessageFragment.REFRESH_UNREADMSG_BROADCAST)){
                 getUnreadMsg();
+            }
+            if(intent.getAction().equals(SettingsActivity.CALL_FINISH)){
+                MainActivity.this.finish();
             }
         }
     };
@@ -127,16 +132,14 @@ public class MainActivity extends AppCompatActivity {
                 for(int n = 0; n < 4; n++){
                     mBottomBarLayout.getBottomItem(n).setStatus(false);
                 }
-                if(position == 0){//消息
+                if(position == 0){//首页
                     mFragment = mFragments[0];
-                }else if(position == 1){//首页
+                }else if(position == 1){//找货
                     mFragment = mFragments[1];
-                }else if(position == 2){//交易大厅
+                }else if(position == 2){//驳船管理
                     mFragment = mFragments[2];
-                }else if(position == 3){//驳船管理
-                    mFragment = mFragments[3];
                 }else{//我的
-                    mFragment = mFragments[4];
+                    mFragment = mFragments[3];
                 }
                 mBottomBarLayout.getBottomItem(position).setStatus(true);
                 if (mFragments != null) {
@@ -146,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //mBottomBarLayout.getBottomItem(1).setStatus(true);
-        mBottomBarLayout.getBottomItem(1).callOnClick();//默认选中首页
+        mBottomBarLayout.getBottomItem(0).callOnClick();//默认选中首页
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cimcitech.lyt.R;
@@ -63,7 +64,9 @@ public class DialogUtils {
      */
     public static Dialog createLoadingDialog(Context context) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View v = inflater.inflate(R.layout.layout_loading_dialog, null); // 得到加载view
+        View v = inflater.inflate(R.layout.layout_login_dialog, null); // 得到加载view
+        TextView label_Tv = (TextView)v.findViewById(R.id.label_tv);
+        label_Tv.setText("加载中");
         LinearLayout layout = (LinearLayout) v.findViewById(R.id.dialog_view); // 加载布局
         Dialog loadingDialog = new Dialog(context, R.style.loading_dialog); // 创建自定义样式dialog
         loadingDialog.setCancelable(false); // 不可以用"返回键"取消
@@ -76,6 +79,8 @@ public class DialogUtils {
     public static Dialog createLoginDialog(Context context) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.layout_login_dialog, null); // 得到加载view
+        TextView label_Tv = (TextView)v.findViewById(R.id.label_tv);
+        label_Tv.setText("登录中");
         LinearLayout layout = (LinearLayout) v.findViewById(R.id.dialog_view); // 加载布局
         Dialog loginDialog = new Dialog(context, R.style.login_dialog); // 创建自定义样式dialog
         loginDialog.setCancelable(false); // 不可以用"返回键"取消
@@ -87,7 +92,9 @@ public class DialogUtils {
 
     public static Dialog createCommittingDialog(Context context) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View v = inflater.inflate(R.layout.layout_loading_dialog, null); // 得到加载view
+        View v = inflater.inflate(R.layout.layout_login_dialog, null); // 得到加载view
+        TextView label_Tv = (TextView)v.findViewById(R.id.label_tv);
+        label_Tv.setText("提交中");
         LinearLayout layout = (LinearLayout) v.findViewById(R.id.dialog_view); // 加载布局
         Dialog loadingDialog = new Dialog(context, R.style.loading_dialog); // 创建自定义样式dialog
         loadingDialog.setCancelable(false); // 不可以用"返回键"取消

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimary2">#503F51B5</color>
+    <color name="login_btn_background">#0179D5</color>
+    <color name="message_item_devid_color">#F4F4F4</color>
+    <color name="colorPrimary">#F8DD78</color>
+    <color name="colorPrimary2">#F4B957</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-
+    <color name="alpha30">#20000000</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
@@ -12,7 +14,7 @@
     <color name="red">#FF0000</color>
     <color name="black_33">#666666</color>
     <color name="contact_detail_more_item_clicked">#F0F0F0</color>
-    <color name="tab_normal_color">#515051</color>
+    <color name="tab_normal_color">#CCCCCC</color>
     <color name="grey">#808080</color>
     <color name="blueStatus">#1680E2</color>
 </resources>

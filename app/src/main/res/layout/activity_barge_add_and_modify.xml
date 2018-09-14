@@ -1,0 +1,420 @@
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/activity_barge_detail_title"/>
+
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f2f2f2"
+        android:scrollbars="none"
+        android:layout_marginBottom="40dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+            <!--驳船信息-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:drawableLeft="@mipmap/ic_barge"
+                    android:drawablePadding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/main_text_size"
+                    android:padding="8dip"
+                    android:text="驳船信息"
+                    android:textColor="@color/black"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dip"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:text="@string/createtime"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/main_text_size" />
+                    <TextView
+                        android:id="@+id/createtime_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dip"
+                        android:gravity="right"
+                        android:text="123123"
+                        android:textColor="@color/black"
+                        android:drawableRight="@mipmap/more_icon"
+                        android:drawablePadding="@dimen/barge_change_drawable_padding"
+                        android:textSize="@dimen/main_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dip"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:text="@string/bargename"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/main_text_size" />
+
+                    <TextView
+                        android:id="@+id/bargename_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:textColor="@color/black"
+                        android:drawableRight="@mipmap/more_icon"
+                        android:drawablePadding="@dimen/barge_change_drawable_padding"
+                        android:textSize="@dimen/main_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dip"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:text="@string/nationality"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/main_text_size" />
+
+                    <TextView
+                        android:id="@+id/nationality_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:textColor="@color/black"
+                        android:drawableRight="@mipmap/more_icon"
+                        android:drawablePadding="@dimen/barge_change_drawable_padding"
+                        android:textSize="@dimen/main_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dip"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:text="@string/builttime"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/main_text_size" />
+
+                    <TextView
+                        android:id="@+id/builttime_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:inputType="numberDecimal"
+                        android:maxLength="11"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:textColor="@color/black"
+                        android:drawableRight="@mipmap/more_icon"
+                        android:drawablePadding="@dimen/barge_change_drawable_padding"
+                        android:textSize="@dimen/main_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dip"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:text="@string/length"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/main_text_size" />
+
+                    <TextView
+                        android:id="@+id/length_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:padding="8dip"
+                        android:gravity="right"
+                        android:textColor="@color/black"
+                        android:drawableRight="@mipmap/more_icon"
+                        android:drawablePadding="@dimen/barge_change_drawable_padding"
+                        android:textSize="@dimen/main_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dip"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:text="@string/width"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/main_text_size" />
+
+                    <TextView
+                        android:id="@+id/width_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:padding="8dip"
+                        android:gravity="right"
+                        android:textColor="@color/black"
+                        android:drawableRight="@mipmap/more_icon"
+                        android:drawablePadding="@dimen/barge_change_drawable_padding"
+                        android:textSize="@dimen/main_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dip"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:text="@string/grosston"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/main_text_size" />
+
+                    <TextView
+                        android:id="@+id/grosston_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dip"
+                        android:gravity="right"
+                        android:textColor="@color/black"
+                        android:drawableRight="@mipmap/more_icon"
+                        android:drawablePadding="@dimen/barge_change_drawable_padding"
+                        android:textSize="@dimen/main_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dip"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:text="@string/netTon"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/main_text_size"/>
+
+                    <TextView
+                        android:id="@+id/netTon_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dip"
+                        android:gravity="right"
+                        android:textColor="@color/black"
+                        android:drawableRight="@mipmap/more_icon"
+                        android:drawablePadding="@dimen/barge_change_drawable_padding"
+                        android:textSize="@dimen/main_text_size"
+                        android:visibility="visible"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/province_Linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dip"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:text="@string/deadweightton"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/main_text_size"/>
+
+                    <TextView
+                        android:id="@+id/deadweightton_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dip"
+                        android:gravity="right"
+                        android:textColor="@color/black"
+                        android:drawableRight="@mipmap/more_icon"
+                        android:drawablePadding="@dimen/barge_change_drawable_padding"
+                        android:textSize="@dimen/main_text_size"
+                        android:visibility="visible"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dip"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:text="@string/picture"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/main_text_size" />
+
+                    <TextView
+                        android:id="@+id/picture_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dip"
+                        android:gravity="right"
+                        android:text="未上传"
+                        android:textColor="@color/black"
+                        android:drawableRight="@mipmap/more_icon"
+                        android:drawablePadding="@dimen/barge_change_drawable_padding"
+                        android:textSize="@dimen/main_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dip"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="8dip"
+                        android:text="@string/shipcertificatepicture"
+                        android:textColor="@color/black_33"
+                        android:textSize="@dimen/main_text_size"/>
+
+                    <TextView
+                        android:id="@+id/shipcertificatepicture_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dip"
+                        android:gravity="right"
+                        android:textColor="@color/black"
+                        android:drawableRight="@mipmap/more_icon"
+                        android:drawablePadding="@dimen/barge_change_drawable_padding"
+                        android:textSize="@dimen/main_text_size"
+                        android:text="未上传"
+                        android:visibility="visible"/>
+                </LinearLayout>
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/command_tv"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="删除驳船"
+                    android:textColor="@color/black_33"
+                    android:background="@color/white"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <TextView
+        android:id="@+id/commit_tv"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_gravity="end|bottom"
+        android:background="@color/colorPrimary"
+        android:text="提交"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+    <!--more-->
+    <LinearLayout
+        android:id="@+id/popup_menu_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_marginRight="10dp"
+        android:elevation="20dp"
+        android:visibility="gone"
+        android:translationZ="20dp"
+        android:background="@color/white"
+        android:layout_gravity="end|top">
+        <include layout="@layout/more_popup_menu"/>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

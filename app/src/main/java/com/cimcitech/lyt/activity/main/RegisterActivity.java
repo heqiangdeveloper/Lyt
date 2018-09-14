@@ -40,10 +40,6 @@ public class RegisterActivity extends BaseActivity {
     EditText password_Tv;
     @Bind(R.id.clear_password_iv)
     ImageView clear_password_Iv;
-    @Bind(R.id.password_tv2)
-    EditText password_Tv2;
-    @Bind(R.id.clear_password_iv2)
-    ImageView clear_password_Iv2;
     @Bind(R.id.verification_code_tv)
     EditText verification_code_Tv;
     @Bind(R.id.register_bt)
@@ -54,6 +50,7 @@ public class RegisterActivity extends BaseActivity {
     private VerificationCodeVo verificationCodeVo;
     private RegisterVo registerVo;
     private SharedPreferences sp;
+    private boolean isRegister = true;
 
     /**
      * 正则表达式：验证手机号
@@ -71,6 +68,9 @@ public class RegisterActivity extends BaseActivity {
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
+        isRegister = getIntent().getStringExtra("type").equals("Forget") ? false : true;
+
+        initView();
         sp = this.getSharedPreferences(Config.KEY_LOGIN_AUTO, MODE_PRIVATE);//如果存在则打开它，否则创建新的Preferences
         userNameTv.setFocusable(true);//获取焦点
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -79,13 +79,15 @@ public class RegisterActivity extends BaseActivity {
         textWatcher(userNameTv);
         textWatcher(verification_code_Tv);
         textWatcher(password_Tv);
-        textWatcher(password_Tv2);
 
         userNameTv.setText("");
         verification_code_Tv.setText("");
         password_Tv.setText("");
-        password_Tv2.setText("");
         userNameTv.setFocusableInTouchMode(true);
+    }
+
+    public void initView(){
+
     }
 
     public void textWatcher(EditText tv){
@@ -99,8 +101,7 @@ public class RegisterActivity extends BaseActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(userNameTv.getText().toString().trim().length() != 0 &&
                         verification_code_Tv.getText().toString().trim().length() != 0 &&
-                        password_Tv.getText().toString().trim().length() != 0 &&
-                        password_Tv2.getText().toString().trim().length() != 0){
+                        password_Tv.getText().toString().trim().length() != 0 ){
                     registerBtnOn();
                 }else{
                     registerBtnOff();
@@ -125,8 +126,8 @@ public class RegisterActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.clear_name_iv,R.id.clear_password_iv,R.id.clear_password_iv2,R.id.register_bt,
-            R.id.time_bt,R.id.back})
+    @OnClick({R.id.clear_name_iv,R.id.clear_password_iv,R.id.register_bt,
+            R.id.time_bt,R.id.back,R.id.agree_tv})
     public void onclick(View v) {
         switch (v.getId()) {
             case R.id.back:
@@ -137,9 +138,6 @@ public class RegisterActivity extends BaseActivity {
                 break;
             case R.id.clear_password_iv:
                 password_Tv.setText("");
-                break;
-            case R.id.clear_password_iv2:
-                password_Tv2.setText("");
                 break;
             case R.id.time_bt:
                 String userName = userNameTv.getText().toString().trim();
@@ -157,6 +155,9 @@ public class RegisterActivity extends BaseActivity {
                     mCommittingDialog.show();
                     getData();
                 }
+                break;
+            case R.id.agree_tv:
+                startActivity(new Intent(RegisterActivity.this,AgreementActivity.class));
                 break;
         }
     }
@@ -266,7 +267,6 @@ public class RegisterActivity extends BaseActivity {
     public boolean checkInput() {
         String username = userNameTv.getText().toString().trim();
         String psw = password_Tv.getText().toString().trim();
-        String psw2 = password_Tv2.getText().toString().trim();
         String verification_code = verification_code_Tv.getText().toString().trim();
         if (username.equals("")) {
             Toast.makeText(RegisterActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
@@ -274,10 +274,6 @@ public class RegisterActivity extends BaseActivity {
         }
         if (psw.equals("")) {
             Toast.makeText(RegisterActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if (psw2.equals("")) {
-            Toast.makeText(RegisterActivity.this, "请输入确认密码", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (verification_code.equals("")) {
@@ -290,10 +286,6 @@ public class RegisterActivity extends BaseActivity {
             verification_code_Tv.setText("");
             return false;
         }*/
-        if (!psw.equals(psw2)) {
-            Toast.makeText(RegisterActivity.this, "两次输入的密码不一致，请确认", Toast.LENGTH_SHORT).show();
-            return false;
-        }
         return true;
     }
 

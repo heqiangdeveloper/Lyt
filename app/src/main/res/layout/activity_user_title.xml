@@ -33,7 +33,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:id="@+id/userIcon"
-                android:src="@mipmap/user_icon"
+                android:src="@mipmap/icon_portrait"
                 circleimageview:border_width="2dp"
                 circleimageview:border_overlay="false"
                 circleimageview:border_color="#FF000000"

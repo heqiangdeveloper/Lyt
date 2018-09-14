@@ -17,12 +17,12 @@
         android:indeterminateDrawable="@drawable/progress_bar" />
 
     <TextView
+        android:id="@+id/label_tv"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dip"
-        android:text="登录中..."
+        android:text="登录中"
         android:textSize="18sp"
         android:textColor="@color/white" />
 

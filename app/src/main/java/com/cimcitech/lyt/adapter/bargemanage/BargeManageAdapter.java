@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cimcitech.lyt.R;
@@ -100,14 +101,13 @@ public class BargeManageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             }
             final BargeInfo item = data.get(position);
             //船名
-            ((ItemViewHolder) holder).custName_Tv.setText(item.getBargeName() != null && !item
-                    .getBargeName().equals("") ? "" + item.getBargeName() : "" + "" );
+            ((ItemViewHolder) holder).bargename_Tv.setText(item.getBargename() != null && !item
+                    .getBargename().equals("") ? "船名：" + item.getBargename() : "船名：" + "" );
             //船籍
-            ((ItemViewHolder) holder).jobNum_Tv.setText(item.getNationality() != null && !item
-                    .getNationality().equals("") ? "" + item.getNationality():"" + "");
+            ((ItemViewHolder) holder).nationality_Tv.setText(item.getNationality() != null && !item
+                    .getNationality().equals("") ? "船籍：" + item.getNationality():"船籍：" + "");
             //吨位
-            ((ItemViewHolder) holder).machineNum_Tv.setText(item.getDeadweightTon() != null ? ""
-                    + item.getDeadweightTon() : "" + "");
+            ((ItemViewHolder) holder).deadweightton_Tv.setText("载重吨位：" + item.getDeadweightton());
         }
     }
 
@@ -129,14 +129,15 @@ public class BargeManageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 
     static class ItemViewHolder extends RecyclerView.ViewHolder {
-        TextView serialNum_Tv,custName_Tv,jobNum_Tv,machineNum_Tv;
+        ImageView pic_Iv;
+        TextView bargename_Tv,deadweightton_Tv,nationality_Tv;
 
         public ItemViewHolder(View view) {
             super(view);
-            serialNum_Tv = view.findViewById(R.id.serialNum_tv);
-            custName_Tv = view.findViewById(R.id.custName_tv);
-            jobNum_Tv = view.findViewById(R.id.jobNum_tv);
-            machineNum_Tv = view.findViewById(R.id.machineNum_tv);
+            pic_Iv = view.findViewById(R.id.pic_iv);
+            deadweightton_Tv = view.findViewById(R.id.deadweightton_tv);
+            bargename_Tv = view.findViewById(R.id.bargename_tv);
+            nationality_Tv = view.findViewById(R.id.nationality_tv);
         }
     }
 

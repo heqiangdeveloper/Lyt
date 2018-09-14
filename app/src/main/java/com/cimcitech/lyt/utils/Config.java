@@ -10,13 +10,16 @@ import com.cimcitech.lyt.bean.login.Loginback;
 
 public class Config {
 
-    public static String AppAuthStr = "";
 
-    public static  String  userName = "";//用户登录名
+    public static  String  USERNAME = "";//用户登录名
 
-    public static  String  realName = "";//用户真实的姓名
+    public static int ACCOUNTID = 0;
 
-    public static  boolean isLeader = false;
+    public static String ACCOUNTNO = "";
+
+    public static int ACCOUNTTYPE = 0;
+
+    public static String TOKEN = "";
 
     public static boolean isLogin = false;
 
@@ -58,17 +61,17 @@ public class Config {
 
     //public static final String IP = "http://test.lingyu.com:8081/ly";  //测试
 
-    //public static final String IP = "http://zh.lingyu.com:8081/ly";  //正式
+    //public static final String IP = "http://10.33.195.193:8081/lyt";  //本机2
 
-    //public static final String IP = "http://10.34.10.21:8080/tdsh";//本机
+    public static final String IP = "http://192.168.2.96:8081/lyt";//本机
 
-    public static final String IP = "http://113.106.81.132:8086/tdsh";//zxq
+    //public static final String IP = "http://113.106.81.132:8086/tdsh";//zxq
 
     //public static final String IP = "http://10.34.10.79:8080/tdsh";//zxq
 
     //public static final String IP = "http://10.34.42.122:8080/tdsh";//hmn
 
-    public static final String USER_LOGIN_URL = IP + "/users/login"; //登录
+    public static final String USER_LOGIN_URL = IP + "/account/login"; //登录
 
     public static final String VERIFICATION_CODE_URL = IP + "/users/sendMsg"; //注册的验证码
 
@@ -78,52 +81,20 @@ public class Config {
 
     public static final String QUERY_USERINFO_URL = IP + "/users/list"; //查询所有用户信息
 
-    public static final String QUERY_ROLEINFO_URL = IP + "/roles/queryRoles"; //查询所有角色信息
+    public static final String QUERY_BARGE_URL = IP + "/barge/pageListBarge"; //查询驳船信息
 
-    public static final String FILE_SEARCH_URL = IP + "/saleContDet/list"; //合同文档查询
+    public static final String DELETE_BARGE_URL = IP + "/barge/deleteBarge"; //删除驳船信息
 
-    public static final String FILE_SEARCH_DETAIL_URL = IP + "/file/queryByDetailId"; //合同文档对应文件查询
+    public static final String ADD_BARGE_URL = IP + "/barge/addBarge"; //新增驳船信息
 
-    //public static final String FILE_DOWNLOAD_URL = IP + "/file/download"; //文件下载
+    public static final String UPDATE_BARGE_URL = IP + "/barge/updateBarge"; //修改驳船信息
 
-    public static final String FILE_DOWNLOAD_URL = IP + "/file/downloadSaleContFile"; //文件下载
+    public static final String QUERY_BARGECABIN_URL = IP + "/bargeCabin/queryBargeCabin";
+    //查询驳船对应的船舱信息
 
-    public static final String IMAGE_DOWNLOAD_URL = IP + "/file/showIcon2App?iconUrl=";
-    //图片下载
+    public static final String ADD_BARGECABIN_URL = IP + "/bargeCabin/addBargeCabin"; //添加驳船对应的船舱信息
 
-    public static final String QUERY_CONTACT_URL = IP + "/contact/list"; //查询联系人
+    public static final String UPDATE_BARGECABIN_URL = IP + "/bargeCabin/updateBargeCabin"; //修改驳船对应的船舱信息
 
-    public static final String UPDATE_CONTACT_STATE_URL = IP + "/contact/modifyContactState"; //修改联系人状态
-
-    public static final String GET_POPWIN_DATA_URL = IP + "/baseCodeValue/getAllBaseValueByCodeType"; //获取下拉数据
-
-    public static final String ADD_CONTACT_URL = IP + "/contact/addContact"; //新增联系人信息
-
-    public static final String UPDATE_CONTACT_URL = IP + "/contact/modifyContact"; //修改联系人信息
-
-    public static final String DELETE_CONTACT_URL = IP + "/contact/deleteContact"; //删除联系人
-
-    public static final String GET_ALL_CUST_URL = IP + "/cust/list"; //获取所有的客户信息（可分页）
-
-    public static final String QUERY_DISPATCH_SALE_URL = IP +
-            "/saleMaintenPlan/queryByRegionCharge"; //查询派工信息,当合同类型=销售合同时调用
-
-    public static final String QUERY_DISPATCH_MAIN_URL = IP +
-            "/maintenancePlan/queryByRegionCharge"; //查询派工信息,当合同类型=维保合同时调用
-
-    public static final String SALE_CONFIRM_PLAN_URL = IP + "/saleMaintenPlan/confirmSaleMaintenPlan";
-    //确认接收派工单，当合同类型=销售合同时调用
-
-    public static final String MAIN_CONFIRM_PLAN_URL = IP + "/maintenancePlan/confirmMaintenancePlan";
-    //确认接收派工单,当合同类型=维保合同时调用
-
-    public static final String QUERY_FAULT_HANDLE = IP + "/faultHandle/list"; //查询故障处理办法
-
-    public static final String announceDetail = IP + "/announce/getCurrInfo"; //获取公告详情
-
-    public static final String announceList = IP + "/announce/pageList"; //获取公告列表
-
-    public static final String getProviceAndCity = IP + "/cate/getProviceAndCity"; //省市
-
-    public static final String updateApk = IP + "/appUpdate/getNewAppUpdate"; //更新apk
+    public static final String DELETE_BARGECABIN_URL = IP + "/bargeCabin/deleteBargeC"; //删除驳船对应的船舱信息
 }

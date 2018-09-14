@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +42,8 @@ public class SettingsActivity extends AppCompatActivity {
     public DataCleanManager manager = null;
     private final Context context = SettingsActivity.this;
     private SharedPreferences sp;
+
+    public static final String CALL_FINISH = "com.cimcitech.lyt.mainactivity.finish";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -122,6 +125,7 @@ public class SettingsActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 ModifyUserInfoPreference();//清除登录信息
                                 startActivity(new Intent(context, LoginActivity.class));
+                                sendMainActivityFinishBroadcast();
                                 finish();
                             }
                         })
@@ -138,8 +142,16 @@ public class SettingsActivity extends AppCompatActivity {
     public void ModifyUserInfoPreference(){
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("password", "");
-        editor.putString("realName", "");
-        editor.putLong("userId",0);
+        editor.putInt("accountId", 0);
+        editor.putString("token","");
+        //  editor.putString("userName","");
+        editor.putInt("accountType",-1);
         editor.commit();
+    }
+
+    public void sendMainActivityFinishBroadcast(){
+        Intent i = new Intent();
+        i.setAction(SettingsActivity.CALL_FINISH);
+        LocalBroadcastManager.getInstance(SettingsActivity.this).sendBroadcast(i);
     }
 }

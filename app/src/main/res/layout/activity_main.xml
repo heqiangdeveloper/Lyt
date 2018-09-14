@@ -40,21 +40,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            app:iconNormal="@mipmap/tab_micro_normal"
-            app:iconSelected="@mipmap/tab_micro_selected"
-            app:itemText="消息"
-            app:textColorNormal="@color/tab_normal_color"
-            app:textColorSelected="@color/colorPrimary"
-            app:itemTextSize="@dimen/bottombar_item_text_size"
-            app:itemMarginTop="@dimen/bottombar_item_margin_top"
-            />
-
-        <com.chaychan.library.BottomBarItem
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            app:iconNormal="@mipmap/tab_home_normal"
-            app:iconSelected="@mipmap/tab_home_selected"
+            app:iconNormal="@mipmap/ic_home_off"
+            app:iconSelected="@mipmap/ic_home_on"
             app:itemText="首页"
             app:textColorNormal="@color/tab_normal_color"
             app:textColorSelected="@color/colorPrimary"
@@ -66,8 +53,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            app:iconNormal="@mipmap/tab_schedule_normal"
-            app:iconSelected="@mipmap/tab_schedule_selected"
+            app:iconNormal="@mipmap/ic_quote_off"
+            app:iconSelected="@mipmap/ic_quote_on"
             app:itemText="交易大厅"
             app:textColorNormal="@color/tab_normal_color"
             app:textColorSelected="@color/colorPrimary"
@@ -75,12 +62,14 @@
             app:itemMarginTop="@dimen/bottombar_item_margin_top"
             />
 
+
+
         <com.chaychan.library.BottomBarItem
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            app:iconNormal="@mipmap/tab_me_normal"
-            app:iconSelected="@mipmap/tab_me_selected"
+            app:iconNormal="@mipmap/ic_barge_off"
+            app:iconSelected="@mipmap/ic_barge_on"
             app:itemText="驳船管理"
             app:textColorNormal="@color/tab_normal_color"
             app:textColorSelected="@color/colorPrimary"
@@ -88,12 +77,25 @@
             app:itemMarginTop="@dimen/bottombar_item_margin_top"
             />
 
+        <!--<com.chaychan.library.BottomBarItem-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:iconNormal="@mipmap/tab_barge_normal48"-->
+            <!--app:iconSelected="@mipmap/tab_barge_selected48"-->
+            <!--app:itemText=""-->
+            <!--app:textColorNormal="@color/tab_normal_color"-->
+            <!--app:textColorSelected="@color/colorPrimary"-->
+            <!--app:itemTextSize="@dimen/bottombar_item_text_size"-->
+            <!--app:itemMarginTop="@dimen/bottombar_item_margin_top"-->
+            <!--/>-->
+
         <com.chaychan.library.BottomBarItem
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            app:iconNormal="@mipmap/tab_me_normal"
-            app:iconSelected="@mipmap/tab_me_selected"
+            app:iconNormal="@mipmap/ic_preson_off"
+            app:iconSelected="@mipmap/ic_personal_on"
             app:itemText="我的"
             app:textColorNormal="@color/tab_normal_color"
             app:textColorSelected="@color/colorPrimary"

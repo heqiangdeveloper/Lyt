@@ -5,32 +5,9 @@ package com.cimcitech.lyt.bean.login;
  */
 
 public class LoginVo {
-    /*
-    *
-    * {
-        "code": 0,
-        "data": {
-            "userId": 13464,
-            "realname": "系统管理员",
-            "token": "2FA56C85-C3CA-4897-891B-4FE41A4E07E8"
-        },
-        "msg": "登录成功！",
-        "success": true
-       }
-     */
-
-    private int code;
     private String msg;
     private boolean success;
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
+    private LoginData data;
 
     public String getMsg() {
         return msg;
@@ -46,5 +23,61 @@ public class LoginVo {
 
     public void setSuccess(boolean success) {
         this.success = success;
+    }
+
+    public LoginData getData() {
+        return data;
+    }
+
+    public void setData(LoginData data) {
+        this.data = data;
+    }
+
+    public class  LoginData{
+        private int accountId;//用户id
+        private int accountType;//用户类型，角色
+        private String accountNo;//登录名
+        private String userName;//真实姓名
+        private String token;
+
+        public int getAccountId() {
+            return accountId;
+        }
+
+        public void setAccountId(int accountId) {
+            this.accountId = accountId;
+        }
+
+        public int getAccountType() {
+            return accountType;
+        }
+
+        public void setAccountType(int accountType) {
+            this.accountType = accountType;
+        }
+
+        public String getAccountNo() {
+            return accountNo;
+        }
+
+        public void setAccountNo(String accountNo) {
+            this.accountNo = accountNo;
+        }
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
+
+        public String getToken() {
+            return token;
+        }
+
+        public void setToken(String token) {
+            this.token = token;
+        }
     }
 }
