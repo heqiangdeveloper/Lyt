@@ -20,6 +20,12 @@ public class DateTool {
         return formatter.format(curDate);
     }
 
+    public static String getSystemDateStr() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+        return formatter.format(curDate);
+    }
+
     public static String transferDateStr(String string){
         //下面将“2018-8-8”格式时间，转化为标准日期“2018-08-06”
         SimpleDateFormat foramt = new SimpleDateFormat("yyyy-MM-dd");

@@ -9,8 +9,6 @@ import com.cimcitech.lyt.bean.login.Loginback;
  */
 
 public class Config {
-
-
     public static  String  USERNAME = "";//用户登录名
 
     public static int ACCOUNTID = 0;
@@ -28,6 +26,9 @@ public class Config {
     public static String KEY_LOGIN_AUTO = "key_login_auto";
 
     public static int unReadMsg = 0;
+
+    //聚合数据appkey
+    public static final String APPKEY= "bf90b08a2f5cf540d796ae413cad2660";
 
     public static String PUBLIC_KEY =
             "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDqB+OB1GMmNsOushhd3nHKO3OsextO+UYjtxUBLViHIQ"
@@ -47,8 +48,6 @@ public class Config {
     public static Long userId;
 
     public static boolean isUserNameVaild = false;
-
-
     public static boolean isSubordinate = false;
     public static boolean isAddMyClient = false;
     public static boolean isAddVisit = false;
@@ -61,9 +60,9 @@ public class Config {
 
     //public static final String IP = "http://test.lingyu.com:8081/ly";  //测试
 
-    //public static final String IP = "http://10.33.195.193:8081/lyt";  //本机2
+    public static final String IP = "http://10.43.10.164:8081/lyt";  //本机2
 
-    public static final String IP = "http://192.168.2.96:8081/lyt";//本机
+    //public static final String IP = "http://192.168.2.91:8081/lyt";//本机
 
     //public static final String IP = "http://113.106.81.132:8086/tdsh";//zxq
 
@@ -71,11 +70,14 @@ public class Config {
 
     //public static final String IP = "http://10.34.42.122:8080/tdsh";//hmn
 
-    public static final String USER_LOGIN_URL = IP + "/account/login"; //登录
+    public static final String USER_LOGIN_URL = IP + "/account/appLogin"; //登录
 
-    public static final String VERIFICATION_CODE_URL = IP + "/users/sendMsg"; //注册的验证码
+    public static final String VERIFICATION_CODE_URL = IP + "/account/sendCheckCode"; //注册的验证码
 
-    public static final String REGISTER_USER_URL = IP + "/users/reg"; //注册新用户
+    public static final String REGISTER_USER_URL = IP + "/account/register"; //注册新用户
+
+    public static final String IDCARD_IDENTIFY_URL= "http://apis.juhe.cn/idimage/verify";
+    //调用聚合数据api,身份证OCR识别
 
     public static final String MODIFY_PASSWORD = IP + "/users/updPassword"; //修改密码
 

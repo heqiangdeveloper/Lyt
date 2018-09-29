@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 
 import com.cimcitech.lyt.R;
 import com.cimcitech.lyt.bean.login.LoginVo;
-import com.cimcitech.lyt.rsa.RSAUtils;
 import com.cimcitech.lyt.utils.Config;
 import com.cimcitech.lyt.utils.GjsonUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -256,10 +254,8 @@ public class LoginActivity extends BaseActivity {
             loginBtnOff();
         }
     }
-    @OnClick({R.id.clear_name_iv, R.id.clear_password_iv,R.id.forget_psd_tv,R.id.login_bt,R.id
-            .new_user_tv})
+    @OnClick({R.id.clear_name_iv, R.id.clear_password_iv,R.id.forget_psd_tv,R.id.login_bt,R.id.new_user_tv})
     public void onclick(View v) {
-        Intent i = new Intent(LoginActivity.this,RegisterActivity.class);
         switch (v.getId()) {
             case R.id.clear_name_iv:
                 userNameTv.setText("");
@@ -268,12 +264,14 @@ public class LoginActivity extends BaseActivity {
                 passwordTv.setText("");
                 break;
             case R.id.forget_psd_tv://忘记密码
-                i.putExtra("type","Forget");
-                startActivity(i);
+//                Intent i = new Intent(LoginActivity.this,RegisterActivity.class);
+//                i.putExtra("type","Forget");
+//                startActivity(i);
                 break;
             case R.id.new_user_tv://新用户注册
-                i.putExtra("type","New");
-                startActivity(i);
+                Intent i2 = new Intent(LoginActivity.this,RegisterFirstActivity.class);
+                i2.putExtra("type","New");
+                startActivity(i2);
                 break;
             case R.id.login_bt:
                 if(loginBt.isClickable()){
@@ -298,13 +296,14 @@ public class LoginActivity extends BaseActivity {
                 .url(Config.USER_LOGIN_URL)
                 .addParams("accountno", userNameTv.getText().toString().trim())
                 .addParams("password", psw)
+                .addParams("isApp",1 + "")
                 .build()
                 .execute(
                         new StringCallback() {
                             @Override
                             public void onError(Call call, Exception e, int id) {
                                 mLoginDialog.dismiss();
-                                Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, e + "", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override

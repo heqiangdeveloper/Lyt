@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme.AppBarOverlay"
+    android:fitsSystemWindows="true">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:navigationIcon="@null"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/login_activity_bg2"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <RelativeLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_back_new" />
+                <TextView
+                    android:id="@+id/tile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="@string/regist_first_label"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/corners_button_bg">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="@dimen/register_item_margin_top"
+                    android:background="@color/transparent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"
+                        android:text="@string/regist_first_name"/>
+
+                    <EditText
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/name_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:ellipsize="end"
+                        android:hint="@string/regist_first_name_hint"
+                        android:textColorHint="@color/black_33"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/clear_name_iv"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="15dip"-->
+                        <!--android:src="@mipmap/icon_clear_edittext" />-->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="@dimen/register_item_margin_top"
+                    android:background="@color/transparent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"
+                        android:text="@string/regist_first_id_card"/>
+
+                    <EditText
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/idcard_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:ellipsize="end"
+                        android:hint="@string/regist_first_id_card_hint"
+                        android:textColorHint="@color/black_33"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/clear_name_iv"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="15dip"-->
+                        <!--android:src="@mipmap/icon_clear_edittext" />-->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip"
+                    android:layout_marginLeft="10dip"
+                    android:gravity="center_vertical"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="@dimen/register_item_margin_top"
+                    android:background="@color/transparent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"
+                        android:text="@string/regist_first_type"/>
+
+                    <TextView
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/type_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:text="驳船"
+                        android:textColorHint="@color/black"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/clear_name_iv"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="15dip"-->
+                        <!--android:src="@mipmap/icon_clear_edittext" />-->
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:text="@string/regist_first_id_card_up"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="@dimen/register_item_margin_top"/>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/register_item_margin_top"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginBottom="20dp">
+                    <FrameLayout
+                        android:id="@+id/font_side_fl"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="@dimen/register_idcard_height"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/bg_layout"
+                        android:padding="@dimen/my_info_area_padding">
+                        <ImageView
+                            android:id="@+id/font_side_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="#F4F5F7"/>
+                        <TextView
+                            android:id="@+id/upload_tv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/regist_first_id_card_front"
+                            android:drawableTop="@mipmap/add_idcard3"
+                            android:drawablePadding="10dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textColor="@color/colorPrimary"/>
+                    </FrameLayout>
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="100dp"/>
+                    <FrameLayout
+                        android:id="@+id/behind_side_fl"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="@dimen/register_idcard_height"
+                        android:background="@drawable/bg_layout"
+                        android:padding="@dimen/my_info_area_padding">
+                        <ImageView
+                            android:id="@+id/behind_side_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:id="@+id/upload_tv2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/regist_first_id_card_behind"
+                            android:layout_gravity="center"
+                            android:drawableTop="@mipmap/add_idcard3"
+                            android:drawablePadding="10dp"
+                            android:gravity="center"
+                            android:textColor="@color/colorPrimary"/>
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/show_agree_cb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:button="@drawable/register_checkbox_style"
+                    android:checked="false"
+                    android:paddingLeft="10dip" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/agree_text1"/>
+                <TextView
+                    android:id="@+id/agree_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/agree_text2"
+                    android:textColor="@color/colorPrimary"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/register_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dip"
+                android:layout_marginRight="0dip"
+                android:layout_marginTop="30dip"
+                android:background="@drawable/shape_login_button_off"
+                android:text="@string/regist_first_next"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+</android.support.design.widget.AppBarLayout>

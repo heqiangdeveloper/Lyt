@@ -48,8 +48,7 @@ public class CountDownTimerButton extends AppCompatButton implements View.OnClic
             temp_duration -= 1000;
             if (temp_duration < 0) {//倒计时结束
                 CountDownTimerButton.this.setEnabled(true);
-                CountDownTimerButton.this.setBackgroundColor(getResources().getColor(R.color
-                        .colorPrimaryDark));
+                CountDownTimerButton.this.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 CountDownTimerButton.this.setText(clickBeffor);
                 stopTimer();
             }

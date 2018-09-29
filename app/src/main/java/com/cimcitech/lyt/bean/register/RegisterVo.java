@@ -6,17 +6,8 @@ package com.cimcitech.lyt.bean.register;
 
 //解析注册的bean
 public class RegisterVo {
-    private int code;
     private String msg;
     private boolean success;
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
 
     public String getMsg() {
         return msg;

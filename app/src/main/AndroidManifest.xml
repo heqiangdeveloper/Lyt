@@ -193,7 +193,10 @@
                   android:launchMode="singleTask">
 
         </activity>
-        <activity android:name=".activity.main.RegisterActivity"
+        <activity android:name=".activity.main.RegisterFirstActivity"
+                  android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".activity.main.RegisterSecondActivity"
                   android:launchMode="singleTask">
         </activity>
         <activity android:name=".activity.main.AgreementActivity"

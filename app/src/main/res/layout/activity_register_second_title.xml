@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    android:text="@string/regist_label"
+                    android:text="@string/regist_first_label"
                     android:layout_centerInParent="true"/>
             </RelativeLayout>
 
@@ -69,10 +69,10 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:ellipsize="end"
-                        android:hint="请输入手机号或邮箱号"
+                        android:hint="请输入手机号"
                         android:textColorHint="@color/black_33"
                         android:maxLines="1"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -111,7 +111,7 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:ellipsize="end"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/black_33"
                         android:hint="请输入验证码"
                         android:inputType="textPassword"
@@ -157,7 +157,7 @@
                         android:background="@null"
                         android:ellipsize="end"
                         android:hint="请输入密码"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/black_33"
                         android:inputType="textPassword"
                         android:maxLines="1"
@@ -181,6 +181,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
