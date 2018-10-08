@@ -165,11 +165,13 @@ public class RegisterFirstActivity extends BaseActivity {
     public void registerBtnOn(){
         register_Bt.setBackgroundResource(R.drawable.shape_login_button_on);
         register_Bt.setClickable(true);
+        register_Bt.setTextColor(getResources().getColor(R.color.white));
     }
 
     public void registerBtnOff(){
         register_Bt.setBackgroundResource(R.drawable.shape_login_button_off);
         register_Bt.setClickable(false);
+        register_Bt.setTextColor(getResources().getColor(R.color.login_off_color));
     }
 
 
@@ -181,13 +183,21 @@ public class RegisterFirstActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.register_bt:
-                if(register_Bt.isClickable()){
-                    mCommittingDialog.show();
-                    //先检查身份证正面，若成功，再检查身份证反面
-                    verifyFront();
-                }else {
-                    Toast.makeText(RegisterFirstActivity.this,getResources().getString(R.string
-                            .register_warning_msg),Toast.LENGTH_SHORT).show();
+                //判断是否需要调用OCR识别身份证照片
+                if(Config.isNeedVerify){
+                    if(register_Bt.isClickable()){
+                        mCommittingDialog.show();
+                        //先检查身份证正面，若成功，再检查身份证反面
+                        verifyFront();
+                    }else {
+                        Toast.makeText(RegisterFirstActivity.this,getResources().getString(R.string
+                                .register_warning_msg),Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Intent i = new Intent(RegisterFirstActivity.this,RegisterSecondActivity.class);
+                    i.putExtra("name","");
+                    i.putExtra("idCard","");
+                    startActivity(i);
                 }
                 break;
             case R.id.agree_tv:
@@ -501,9 +511,12 @@ public class RegisterFirstActivity extends BaseActivity {
     }
 
     public void addWatcher(){
-        if(name_Et.getText().toString().trim().length() != 0 &&
-                idcard_Et.getText().toString().trim().length() != 0 &&
-                imgPath_front.trim().length() != 0 &&
+//        if(name_Et.getText().toString().trim().length() != 0 &&
+//                idcard_Et.getText().toString().trim().length() != 0 &&
+//                imgPath_front.trim().length() != 0 &&
+//                imgPath_behind.trim().length() != 0 &&
+//                show_agree_Cb.isChecked()){
+        if(imgPath_front.trim().length() != 0 &&
                 imgPath_behind.trim().length() != 0 &&
                 show_agree_Cb.isChecked()){
             registerBtnOn();

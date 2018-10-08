@@ -3,6 +3,7 @@ package com.cimcitech.lyt.activity.main;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,7 +30,7 @@ public class AgreementActivity extends BaseActivity {
     }
 
     public void initView(){
-        String content = getResources().getString(R.string.agree_content);
+        String content = getResources().getString(R.string.agree_content2);
         agree_content_Tv.setText(content);
     }
 

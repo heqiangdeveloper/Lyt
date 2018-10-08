@@ -12,14 +12,43 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:scrollbars="none"
+        android:fadingEdge="none"
+        android:overScrollMode="never"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <TextView
-            android:id="@+id/agree_content_tv"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textColor="@color/black"
-            android:text="adafsafsaf"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:text="粮易通平台用户协议"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/black"
+                android:gravity="right"
+                android:text="版本生效日期：2018年10月8日"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/agree_content_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/black"
+                android:lineSpacingExtra="5dp"
+                android:text="adafsafsaf"/>
+        </LinearLayout>
     </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

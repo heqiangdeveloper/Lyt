@@ -18,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/login_activity_bg2"
+            android:background="@color/white"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -31,12 +31,12 @@
                     android:id="@+id/back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_back_new" />
+                    android:src="@mipmap/ic_back_new_black" />
                 <TextView
                     android:id="@+id/tile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     android:text="@string/regist_first_label"
                     android:layout_centerInParent="true"/>
@@ -49,6 +49,7 @@
                 android:layout_marginTop="20dip"
                 android:background="@drawable/corners_button_bg">
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="40dip"
                     android:layout_marginLeft="10dip"
@@ -87,6 +88,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="40dip"
                     android:layout_marginLeft="10dip"
@@ -125,6 +127,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="40dip"
                     android:layout_marginLeft="10dip"
@@ -167,7 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_33"
                     android:text="@string/regist_first_id_card_up"
                     android:layout_marginLeft="10dip"
                     android:layout_marginRight="10dip"
@@ -180,7 +183,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dip"
                     android:layout_marginRight="10dip"
-                    android:layout_marginBottom="20dp">
+                    android:layout_marginBottom="10dp">
                     <FrameLayout
                         android:id="@+id/font_side_fl"
                         android:layout_width="0dp"
@@ -204,7 +207,7 @@
                             android:drawablePadding="10dp"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:textColor="@color/colorPrimary"/>
+                            android:textColor="@color/black_33"/>
                     </FrameLayout>
                     <View
                         android:layout_width="10dp"
@@ -230,13 +233,13 @@
                             android:drawableTop="@mipmap/add_idcard3"
                             android:drawablePadding="10dp"
                             android:gravity="center"
-                            android:textColor="@color/colorPrimary"/>
+                            android:textColor="@color/black_33"/>
                     </FrameLayout>
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -247,11 +250,13 @@
                     android:layout_gravity="center_vertical"
                     android:button="@drawable/register_checkbox_style"
                     android:checked="false"
-                    android:paddingLeft="10dip" />
+                    android:paddingLeft="10dip"
+                    android:layout_marginLeft="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/agree_text1"/>
+                    android:text="@string/agree_text1"
+                    android:textColor="@color/black_33"/>
                 <TextView
                     android:id="@+id/agree_tv"
                     android:layout_width="wrap_content"
@@ -263,8 +268,8 @@
                 android:id="@+id/register_bt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="0dip"
-                android:layout_marginRight="0dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
                 android:layout_marginTop="30dip"
                 android:background="@drawable/shape_login_button_off"
                 android:text="@string/regist_first_next"

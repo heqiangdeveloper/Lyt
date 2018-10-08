@@ -24,7 +24,7 @@ public class CountDownTimerButton extends AppCompatButton implements View.OnClic
     private OnClickListener mOnClickListener;
     private Timer mTimer;//调度器
     private TimerTask mTask;
-    private long duration = 10000;//倒计时时长 设置默认10秒
+    private long duration = 10000 * 6;//倒计时时长 设置默认60秒
     private long temp_duration;
     private String clickBeffor = "发送验证码";//点击前
     private String clickAfter = "重新发送(";//点击后

@@ -199,6 +199,9 @@
         <activity android:name=".activity.main.RegisterSecondActivity"
                   android:launchMode="singleTask">
         </activity>
+        <activity android:name=".activity.main.ForgetPasswordActivity"
+                  android:launchMode="singleTask">
+        </activity>
         <activity android:name=".activity.main.AgreementActivity"
                   android:launchMode="singleTask">
         </activity>

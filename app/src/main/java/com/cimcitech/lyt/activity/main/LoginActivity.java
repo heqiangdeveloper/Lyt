@@ -238,11 +238,13 @@ public class LoginActivity extends BaseActivity {
     public void loginBtnOn(){
         loginBt.setBackgroundResource(R.drawable.shape_login_button_on);
         loginBt.setClickable(true);
+        loginBt.setTextColor(getResources().getColor(R.color.white));
     }
 
     public void loginBtnOff(){
         loginBt.setBackgroundResource(R.drawable.shape_login_button_off);
         loginBt.setClickable(false);
+        loginBt.setTextColor(getResources().getColor(R.color.login_off_color));
     }
 
     public void showLoginBtn(){
@@ -264,9 +266,8 @@ public class LoginActivity extends BaseActivity {
                 passwordTv.setText("");
                 break;
             case R.id.forget_psd_tv://忘记密码
-//                Intent i = new Intent(LoginActivity.this,RegisterActivity.class);
-//                i.putExtra("type","Forget");
-//                startActivity(i);
+                Intent i = new Intent(LoginActivity.this,ForgetPasswordActivity.class);
+                startActivity(i);
                 break;
             case R.id.new_user_tv://新用户注册
                 Intent i2 = new Intent(LoginActivity.this,RegisterFirstActivity.class);

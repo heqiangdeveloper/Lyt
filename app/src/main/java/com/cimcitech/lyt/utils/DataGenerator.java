@@ -17,7 +17,7 @@ public class DataGenerator {
         Fragment fragments[] = new Fragment[5];
         fragments[0] = new HomeFragment();//首页
         //fragments[1] = new HomeFragment();//
-        fragments[1] = new ExchangeFragment();//找货
+        fragments[1] = new ExchangeFragment();//交易大厅
         fragments[2] = new BargeManageFragment();//驳船管理
         fragments[3] = new UserFragment();//我的
         return fragments;

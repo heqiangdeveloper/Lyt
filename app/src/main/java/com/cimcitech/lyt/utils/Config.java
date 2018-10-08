@@ -9,6 +9,9 @@ import com.cimcitech.lyt.bean.login.Loginback;
  */
 
 public class Config {
+    //是否需要调用聚合数据的开源OCR身份证识别
+    public static boolean isNeedVerify = false;
+
     public static  String  USERNAME = "";//用户登录名
 
     public static int ACCOUNTID = 0;
@@ -60,7 +63,7 @@ public class Config {
 
     //public static final String IP = "http://test.lingyu.com:8081/ly";  //测试
 
-    public static final String IP = "http://10.43.10.164:8081/lyt";  //本机2
+    public static final String IP = "http://10.43.10.142:8081/lyt";  //本机2
 
     //public static final String IP = "http://192.168.2.91:8081/lyt";//本机
 
@@ -75,6 +78,8 @@ public class Config {
     public static final String VERIFICATION_CODE_URL = IP + "/account/sendCheckCode"; //注册的验证码
 
     public static final String REGISTER_USER_URL = IP + "/account/register"; //注册新用户
+
+    public static final String FORGET_PASSWORD_URL = IP + "/account/forgetPassword"; //忘记密码
 
     public static final String IDCARD_IDENTIFY_URL= "http://apis.juhe.cn/idimage/verify";
     //调用聚合数据api,身份证OCR识别
