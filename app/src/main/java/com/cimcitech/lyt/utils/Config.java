@@ -63,7 +63,7 @@ public class Config {
 
     //public static final String IP = "http://test.lingyu.com:8081/ly";  //测试
 
-    public static final String IP = "http://10.43.10.142:8081/lyt";  //本机2
+    public static final String IP = "http://10.43.10.186:8081/lyt";  //本机2
 
     //public static final String IP = "http://192.168.2.91:8081/lyt";//本机
 
@@ -80,6 +80,8 @@ public class Config {
     public static final String REGISTER_USER_URL = IP + "/account/register"; //注册新用户
 
     public static final String FORGET_PASSWORD_URL = IP + "/account/forgetPassword"; //忘记密码
+
+    public static final String CHECK_ACCOUNT_URL = IP + "/account/validateAccount"; //检查账号是否已存在
 
     public static final String IDCARD_IDENTIFY_URL= "http://apis.juhe.cn/idimage/verify";
     //调用聚合数据api,身份证OCR识别
@@ -104,4 +106,10 @@ public class Config {
     public static final String UPDATE_BARGECABIN_URL = IP + "/bargeCabin/updateBargeCabin"; //修改驳船对应的船舱信息
 
     public static final String DELETE_BARGECABIN_URL = IP + "/bargeCabin/deleteBargeC"; //删除驳船对应的船舱信息
+
+    //获取所有的待报价需求
+    public static final String QUERY_WAIT_QUOTE_URL  = IP + "/transport/pageListTranSport";
+
+    //查询我的已报价信息
+    public static final String QUERY_ALREADY_QUOTE_URL  = IP + "/transport/pageListTranSportBoat";
 }

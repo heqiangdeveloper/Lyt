@@ -26,6 +26,7 @@ import com.cimcitech.lyt.utils.Config;
 import com.cimcitech.lyt.utils.GjsonUtil;
 import com.cimcitech.lyt.widget.CountDownTimerButton;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -220,12 +221,13 @@ public class ForgetPasswordActivity extends BaseActivity {
         String inputCheckCode = verification_code_Tv.getText().toString().trim();//验证码
         String password = password_Tv.getText().toString().trim();//密码
 
+        RegisterAccountBean bean = new RegisterAccountBean(accountno,inputCheckCode,accountno, password);
+        String json = new Gson().toJson(bean);
         OkHttpUtils
-                .post()
+                .postString()
                 .url(Config.FORGET_PASSWORD_URL)
-                .addParams("accountno",accountno)
-                .addParams("inputCheckCode",inputCheckCode)
-                .addParams("password",password)
+                .mediaType(MediaType.parse("application/json; charset=utf-8"))
+                .content(json)
                 .build()
                 .execute(
                         new StringCallback() {

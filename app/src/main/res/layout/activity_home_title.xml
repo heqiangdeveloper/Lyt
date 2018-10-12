@@ -27,8 +27,8 @@
                 android:layout_height="match_parent"
                 android:textSize="@dimen/fragment_title_text_size"
                 android:gravity="center"
-                android:textColor="@color/white"
-                android:text="首页"/>
+                android:textColor="@color/black"
+                android:text="@string/tab_home_label"/>
             <!--<ImageView
                 android:gravity="top"
                 android:scaleType="fitXY"

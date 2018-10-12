@@ -34,7 +34,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class MyReceiver extends BroadcastReceiver {
     private static final String TAG = "jiguang";
-    public final static String REFRESH_MESSAGE = "com.cimcitech.cimctd.receiver.refresh.message";
+    public final static String REFRESH_MESSAGE = "com.cimcitech.lyt.receiver.refresh.message";
 
     @Override
     public void onReceive(Context context, Intent intent) {

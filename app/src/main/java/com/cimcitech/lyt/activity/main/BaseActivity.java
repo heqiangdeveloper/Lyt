@@ -37,8 +37,8 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mLoading = DialogUtils.createLoadingDialog(this);
-        mLoginDialog = DialogUtils.createLoginDialog(this);
-        mCommittingDialog = DialogUtils.createCommittingDialog(this);
+        mLoading = DialogUtils.createLoadingDialog(this);//加载中
+        mLoginDialog = DialogUtils.createLoginDialog(this);//登录中
+        mCommittingDialog = DialogUtils.createCommittingDialog(this);//提交中
     }
 }

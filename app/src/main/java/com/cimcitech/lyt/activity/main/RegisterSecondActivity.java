@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cimcitech.lyt.R;
@@ -39,7 +40,6 @@ import okhttp3.Call;
 import okhttp3.MediaType;
 
 public class RegisterSecondActivity extends BaseActivity {
-
     @Bind(R.id.user_name_tv)
     EditText userNameTv;
     @Bind(R.id.clear_name_iv)
@@ -52,6 +52,8 @@ public class RegisterSecondActivity extends BaseActivity {
     EditText verification_code_Tv;
     @Bind(R.id.register_bt)
     Button register_Bt;
+    @Bind(R.id.title)
+    TextView title_Tv;
     @Bind(R.id.time_bt)
     CountDownTimerButton time_Bt;
 
@@ -80,6 +82,7 @@ public class RegisterSecondActivity extends BaseActivity {
 
         //isRegister = getIntent().getStringExtra("type").equals("Forget") ? false : true;
 
+        initView();
         name = getIntent().getStringExtra("name");
         idcard = getIntent().getStringExtra("idcard");
         Log.d("ocr","name is: " + name);
@@ -97,6 +100,10 @@ public class RegisterSecondActivity extends BaseActivity {
         verification_code_Tv.setText("");
         password_Tv.setText("");
         userNameTv.setFocusableInTouchMode(true);
+    }
+
+    public  void initView(){
+        title_Tv.setText(getResources().getString(R.string.regist_second_label));
     }
 
     public void textWatcher(EditText tv){

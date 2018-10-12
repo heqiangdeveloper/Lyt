@@ -196,6 +196,9 @@
         <activity android:name=".activity.main.RegisterFirstActivity"
                   android:launchMode="singleTask">
         </activity>
+        <activity android:name=".activity.main.RegisterFirstActivity2"
+                  android:launchMode="singleTask">
+        </activity>
         <activity android:name=".activity.main.RegisterSecondActivity"
                   android:launchMode="singleTask">
         </activity>

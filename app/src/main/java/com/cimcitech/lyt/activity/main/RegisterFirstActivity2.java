@@ -22,11 +22,9 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.util.TimeUtils;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -43,16 +41,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cimcitech.lyt.R;
-import com.cimcitech.lyt.activity.user.MyInfoActivity;
 import com.cimcitech.lyt.bean.register.IdCardBackVo;
 import com.cimcitech.lyt.bean.register.IdCardFrontVo;
-import com.cimcitech.lyt.bean.register.RegisterVo;
 import com.cimcitech.lyt.bean.register.VerificationCodeVo;
 import com.cimcitech.lyt.utils.Config;
 import com.cimcitech.lyt.utils.DateTool;
 import com.cimcitech.lyt.utils.GjsonUtil;
 import com.cimcitech.lyt.utils.TypeConverter;
-import com.cimcitech.lyt.widget.CountDownTimerButton;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -60,7 +55,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -72,11 +66,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
 
-public class RegisterFirstActivity extends BaseActivity {
-    @Bind(R.id.name_et)
-    EditText name_Et;
-    @Bind(R.id.idcard_et)
-    EditText idcard_Et;
+public class RegisterFirstActivity2 extends BaseActivity {
     @Bind(R.id.font_side_fl)
     FrameLayout font_side_Fl;
     @Bind(R.id.behind_side_fl)
@@ -103,7 +93,7 @@ public class RegisterFirstActivity extends BaseActivity {
     private boolean isRegister = true;
 
     private PopupWindow pop;
-    private final Context context = RegisterFirstActivity.this;
+    private final Context context = RegisterFirstActivity2.this;
     public static final int TAKE_PHOTO = 1;//启动相机标识
     public static final int SELECT_PHOTO = 2;//启动相册标识
     private File outputImagepath;//存储拍完照后的图片
@@ -111,6 +101,9 @@ public class RegisterFirstActivity extends BaseActivity {
     private boolean isFontSelected = true;
     private String imgPath_front = "";
     private String imgPath_behind = "";
+
+    private String name = "";
+    private String idcard = "";
 
     /**
      * 正则表达式：验证手机号
@@ -125,22 +118,12 @@ public class RegisterFirstActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_first);
+        setContentView(R.layout.activity_register_first2);
         ButterKnife.bind(this);
 
         isRegister = getIntent().getStringExtra("type").equals("Forget") ? false : true;
 
         sp = this.getSharedPreferences(Config.KEY_LOGIN_AUTO, MODE_PRIVATE);//如果存在则打开它，否则创建新的Preferences
-        name_Et.setFocusable(true);//获取焦点
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
-
-        //textWatcher(name_Et);
-        //textWatcher(idcard_Et);
-
-        //name_Et.setText("");
-        //idcard_Et.setText("");
-        //name_Et.setFocusableInTouchMode(true);
     }
 
     public void textWatcher(EditText tv){
@@ -190,18 +173,18 @@ public class RegisterFirstActivity extends BaseActivity {
                         //先检查身份证正面，若成功，再检查身份证反面
                         verifyFront();
                     }else {
-                        Toast.makeText(RegisterFirstActivity.this,getResources().getString(R.string
+                        Toast.makeText(RegisterFirstActivity2.this,getResources().getString(R.string
                                 .register_warning_msg),Toast.LENGTH_SHORT).show();
                     }
                 }else{
-                    Intent i = new Intent(RegisterFirstActivity.this,RegisterSecondActivity.class);
+                    Intent i = new Intent(RegisterFirstActivity2.this,RegisterSecondActivity.class);
                     i.putExtra("name","");
                     i.putExtra("idCard","");
                     startActivity(i);
                 }
                 break;
             case R.id.agree_tv:
-                startActivity(new Intent(RegisterFirstActivity.this,AgreementActivity.class));
+                startActivity(new Intent(RegisterFirstActivity2.this,AgreementActivity.class));
                 break;
             case R.id.font_side_fl:
                 isFontSelected = true;
@@ -230,9 +213,9 @@ public class RegisterFirstActivity extends BaseActivity {
         TextView take_photo_Tv = view.findViewById(R.id.take_photo_tv);
         TextView upload_photo_Tv = view.findViewById(R.id.upload_photo_tv);
         TextView cancel_Tv = view.findViewById(R.id.cancel_tv);
-        take_photo_Tv.setOnClickListener(new RegisterFirstActivity.Listener());
-        upload_photo_Tv.setOnClickListener(new RegisterFirstActivity.Listener());
-        cancel_Tv.setOnClickListener(new RegisterFirstActivity.Listener());
+        take_photo_Tv.setOnClickListener(new RegisterFirstActivity2.Listener());
+        upload_photo_Tv.setOnClickListener(new RegisterFirstActivity2.Listener());
+        cancel_Tv.setOnClickListener(new RegisterFirstActivity2.Listener());
         // 需要设置一下此参数，点击外边可消失
         pop.setBackgroundDrawable(new BitmapDrawable());
         // 设置点击窗口外边窗口消失
@@ -275,7 +258,7 @@ public class RegisterFirstActivity extends BaseActivity {
         }
         if(!permissionList.isEmpty()){
             String [] permissions = permissionList.toArray(new String[permissionList.size()]);
-            ActivityCompat.requestPermissions(RegisterFirstActivity.this,permissions,1);
+            ActivityCompat.requestPermissions(RegisterFirstActivity2.this,permissions,1);
         }else {
             take_photo();//已经授权了就调用打开相机的方法
         }
@@ -589,69 +572,55 @@ public class RegisterFirstActivity extends BaseActivity {
     }
 
     public void verifyFront() {
-        //检查上传的身份证照片的正反两面，身份证号码，姓名，有效否
-        String userName = name_Et.getText().toString().trim();
-        String idcard = idcard_Et.getText().toString().trim();
         String key = Config.APPKEY;
         //将图片转成Base64格式
         String image = TypeConverter.GetImageStr(imgPath_front);
 
         //先检测身份证正面，若成功，再检测反面
-        if(userName.length() != 0 && idcard.length() != 0){
-            OkHttpUtils
-                    .post()
-                    .url(Config.IDCARD_IDENTIFY_URL)
-                    .addParams("key", key)
-                    .addParams("image", image)
-                    .addParams("side", "front")
-                    .build()
-                    .execute(
-                            new StringCallback() {
-                                @Override
-                                public void onError(Call call, Exception e, int id) {
-                                    mCommittingDialog.dismiss();
-                                    Toast.makeText(RegisterFirstActivity.this, "网络错误，请检查网络",Toast
-                                            .LENGTH_SHORT).show();
-                                }
+        OkHttpUtils
+                .post()
+                .url(Config.IDCARD_IDENTIFY_URL)
+                .addParams("key", key)
+                .addParams("image", image)
+                .addParams("side", "front")
+                .build()
+                .execute(
+                        new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
+                                mCommittingDialog.dismiss();
+                                Toast.makeText(RegisterFirstActivity2.this, "网络错误，请检查网络",Toast
+                                        .LENGTH_SHORT).show();
+                            }
 
-                                @Override
-                                public void onResponse(String response, int id) {
-                                    Log.d("ocr","front is: " + response);
-                                    try {
-                                        idCardFrontVo = GjsonUtil.parseJsonWithGson(response, IdCardFrontVo.class);
-                                        if (idCardFrontVo != null) {
-                                            if (idCardFrontVo.getError_code() == 0) {//成功
-                                                if(idCardFrontVo.getResult().getRealname().equals
-                                                        (name_Et.getText().toString().trim()) &&
-                                                        idCardFrontVo.getResult().getIdcard().equals
-                                                                (idcard_Et.getText().toString().trim())){
-                                                    //姓名和身份证号码都正确，再验证身份证反面
-                                                    verifyBehind();
-                                                }else{
-                                                    mCommittingDialog.dismiss();
-                                                    Toast.makeText(RegisterFirstActivity.this,
-                                                            "所填写的姓名或身份证号码不正确",Toast.LENGTH_SHORT).show();
-                                                }
-                                            }else{//失败
-                                                mCommittingDialog.dismiss();
-                                                Toast.makeText(RegisterFirstActivity.this,
-                                                        idCardFrontVo.getError_code(),Toast.LENGTH_SHORT).show();
-                                            }
-                                        } else {
+                            @Override
+                            public void onResponse(String response, int id) {
+                                Log.d("ocr","front is: " + response);
+                                try {
+                                    idCardFrontVo = GjsonUtil.parseJsonWithGson(response, IdCardFrontVo.class);
+                                    if (idCardFrontVo != null) {
+                                        if (idCardFrontVo.getError_code() == 0) {//成功
+                                            //姓名和身份证号码都正确，再验证身份证反面
+                                            name = idCardFrontVo.getResult().getRealname();
+                                            idcard = idCardFrontVo.getResult().getIdcard();
+                                            verifyBehind();
+                                        }else{//失败
                                             mCommittingDialog.dismiss();
-                                            Toast.makeText(RegisterFirstActivity.this, "接口访问失败",
-                                                    Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(RegisterFirstActivity2.this,
+                                                    idCardFrontVo.getError_code(),Toast.LENGTH_SHORT).show();
                                         }
-                                    } catch (Exception e) {
+                                    } else {
                                         mCommittingDialog.dismiss();
-                                        e.printStackTrace();
+                                        Toast.makeText(RegisterFirstActivity2.this, "接口访问失败",
+                                                Toast.LENGTH_SHORT).show();
                                     }
+                                } catch (Exception e) {
+                                    mCommittingDialog.dismiss();
+                                    e.printStackTrace();
                                 }
                             }
-                    );
-        }else {
-            Toast.makeText(this,"请输入合法的姓名和身份证号码！",Toast.LENGTH_SHORT).show();
-        }
+                        }
+                );
     }
 
     public void verifyBehind() {
@@ -671,7 +640,7 @@ public class RegisterFirstActivity extends BaseActivity {
                             @Override
                             public void onError(Call call, Exception e, int id) {
                                 mCommittingDialog.dismiss();
-                                Toast.makeText(RegisterFirstActivity.this, "网络错误，请检查网络",Toast
+                                Toast.makeText(RegisterFirstActivity2.this, "网络错误，请检查网络",Toast
                                         .LENGTH_SHORT).show();
                             }
 
@@ -690,27 +659,25 @@ public class RegisterFirstActivity extends BaseActivity {
 
                                             if(Integer.parseInt(todayStr) < Integer.parseInt(endStr)){//有效
                                                 mCommittingDialog.dismiss();
-                                                String name = name_Et.getText().toString().trim();
-                                                String idCard = idcard_Et.getText().toString().trim();
 
                                                 //存储相关的信息，并进行下一步
-                                                Intent i = new Intent(RegisterFirstActivity.this,RegisterSecondActivity.class);
+                                                Intent i = new Intent(RegisterFirstActivity2.this,RegisterSecondActivity.class);
                                                 i.putExtra("name",name);
-                                                i.putExtra("idCard",idCard);
+                                                i.putExtra("idCard",idcard);
                                                 startActivity(i);
                                             }else {//失效
                                                 mCommittingDialog.dismiss();
-                                                Toast.makeText(RegisterFirstActivity.this,
+                                                Toast.makeText(RegisterFirstActivity2.this,
                                                         "身份证不在有效期内！", Toast.LENGTH_SHORT).show();
                                             }
                                         }else{//失败
                                             mCommittingDialog.dismiss();
-                                            Toast.makeText(RegisterFirstActivity.this,
+                                            Toast.makeText(RegisterFirstActivity2.this,
                                                     idCardBackVo.getError_code(),Toast.LENGTH_SHORT).show();
                                         }
                                     } else {
                                         mCommittingDialog.dismiss();
-                                        Toast.makeText(RegisterFirstActivity.this, "接口访问失败",
+                                        Toast.makeText(RegisterFirstActivity2.this, "接口访问失败",
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (Exception e) {
@@ -725,7 +692,7 @@ public class RegisterFirstActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(RegisterFirstActivity.this,LoginActivity.class));
+        startActivity(new Intent(RegisterFirstActivity2.this,LoginActivity.class));
         finish();
     }
 }

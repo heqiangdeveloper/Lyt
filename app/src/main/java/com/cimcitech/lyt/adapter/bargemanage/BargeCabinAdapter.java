@@ -1,38 +1,37 @@
 package com.cimcitech.lyt.adapter.bargemanage;
 
-/**
- * Created by cimcitech on 2017/8/2.
- */
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cimcitech.lyt.R;
-import com.cimcitech.lyt.bean.bargemanage.BargeInfo;
+import com.cimcitech.lyt.bean.bargemanage.BargeCabinData;
+import com.cimcitech.lyt.bean.bargemanage.BargeCabinVo;
 
 import java.util.List;
 
 /**
- * Created by cimcitech on 2017/8/1.
+ * Created by qianghe on 2018/10/11.
  */
 
-public class BargeManageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
+public class BargeCabinAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_FOOTER = 1;
-    private List<BargeInfo> data;
+    private List<BargeCabinData> data;
     private LayoutInflater inflater;
     private static final int TYPE_END = 2;
     private boolean isNotMoreData = false;
+    private Context context;
 
-    public BargeManageAdapter(Context context, List<BargeInfo> data) {
+    public BargeCabinAdapter(Context context, List<BargeCabinData> data) {
         inflater = LayoutInflater.from(context);
         this.data = data;
+        this.context = context;
     }
 
     public void setNotMoreData(boolean b) {
@@ -50,7 +49,7 @@ public class BargeManageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
 
-        void onItemLongClickListener(View view, int position);
+        void onDeleteBtnClickListener(View view, int position);
     }
 
     private OnItemClickListener onItemClickListener;
@@ -62,11 +61,9 @@ public class BargeManageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_ITEM) {
-            View view = inflater.inflate(R.layout.barge_manage_item_view, parent, false);
+            View view = inflater.inflate(R.layout.barge_cabin_item_view, parent, false);
             return new ItemViewHolder(view);
         } else if (viewType == TYPE_FOOTER) {
-//            View view = inflater.inflate(R.layout.recycler_foot_view, parent, false);
-//            return new FootViewHolder(view);
             View view = inflater.inflate(R.layout.recycler_end_view, parent, false);
             return new FootViewHolder(view);
         } else if (viewType == TYPE_END) {
@@ -88,25 +85,31 @@ public class BargeManageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                         onItemClickListener.onItemClick(holder.itemView, position);
                     }
                 });
-                holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
 
+                ((ItemViewHolder) holder).delete_Iv.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public boolean onLongClick(View view) {
+                    public void onClick(View v) {
                         int position = holder.getLayoutPosition();
-                        onItemClickListener.onItemClick(holder.itemView, position);
-                        return false;
+                        onItemClickListener.onDeleteBtnClickListener(((ItemViewHolder) holder).delete_Iv, position);
                     }
                 });
             }
-            final BargeInfo item = data.get(position);
-            //船名
-            ((ItemViewHolder) holder).bargename_Tv.setText(item.getBargename() != null && !item
-                    .getBargename().equals("") ? "船名：" + item.getBargename() : "船名：" + "" );
-            //船籍
-            ((ItemViewHolder) holder).nationality_Tv.setText(item.getNationality() != null && !item
-                    .getNationality().equals("") ? "船籍：" + item.getNationality():"船籍：" + "");
-            //吨位
-            ((ItemViewHolder) holder).deadweightton_Tv.setText("载重吨位：" + item.getDeadweightton());
+
+
+            BargeCabinData item = data.get(position);
+            ((ItemViewHolder) holder).hatchnum_Tv.setText(item.getHatchnum() + "");
+            ((ItemViewHolder) holder).holdcapacity_Tv.setText(item.getHoldcapacity() + "");
+            ((ItemViewHolder) holder).hatchsize_Tv.setText(item.getHatchsize() + "");
+
+            //最后一个item的分割线隐藏
+            if(position == data.size() - 1){
+                ((ItemViewHolder) holder).divide_Vw.setVisibility(View.GONE);
+            }
+
+//            if(position % 2 != 0){
+//                int color = context.getResources().getColor(R.color.barge_cabin_item_bg);
+//                ((ItemViewHolder) holder).root_Ll.setBackgroundColor(color);
+//            }
         }
     }
 
@@ -128,15 +131,19 @@ public class BargeManageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 
     static class ItemViewHolder extends RecyclerView.ViewHolder {
-        ImageView pic_Iv;
-        TextView bargename_Tv,deadweightton_Tv,nationality_Tv;
+        TextView hatchnum_Tv,holdcapacity_Tv,hatchsize_Tv;
+        ImageView delete_Iv;
+        LinearLayout root_Ll;
+        View divide_Vw;
 
         public ItemViewHolder(View view) {
             super(view);
-            pic_Iv = view.findViewById(R.id.pic_iv);
-            deadweightton_Tv = view.findViewById(R.id.deadweightton_tv);
-            bargename_Tv = view.findViewById(R.id.bargename_tv);
-            nationality_Tv = view.findViewById(R.id.nationality_tv);
+            hatchnum_Tv = view.findViewById(R.id.hatchnum_tv);
+            holdcapacity_Tv = view.findViewById(R.id.holdcapacity_tv);
+            hatchsize_Tv = view.findViewById(R.id.hatchsize_tv);
+            delete_Iv = view.findViewById(R.id.delete_iv);
+            root_Ll = view.findViewById(R.id.root_ll);
+            divide_Vw = view.findViewById(R.id.divide_vw);
         }
     }
 
@@ -151,7 +158,7 @@ public class BargeManageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
      * 提供给Activity刷新数据
      * @param list
      */
-    public void updateList(List<BargeInfo> list){
+    public void updateList(List<BargeCabinData> list){
         this.data = list;
         notifyDataSetChanged();
     }

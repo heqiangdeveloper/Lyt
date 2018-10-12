@@ -10,13 +10,17 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.cimcitech.lyt.R;
 import com.cimcitech.lyt.activity.main.BaseActivity;
+import com.cimcitech.lyt.adapter.bargemanage.BargeCabinAdapter;
 import com.cimcitech.lyt.bean.bargemanage.BargeCabinData;
 import com.cimcitech.lyt.bean.bargemanage.BargeCabinVo;
 import com.cimcitech.lyt.bean.bargemanage.BargeInfo;
@@ -28,6 +32,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +40,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
+
+import static com.cimcitech.lyt.R.id.recyclerView;
 
 
 public class BargeDetailActivity extends BaseActivity {
@@ -69,8 +76,10 @@ public class BargeDetailActivity extends BaseActivity {
     TextView shipcertificatepicture_Tv;
     @Bind(R.id.popup_menu_layout)
     LinearLayout popup_menu_Ll;
-    @Bind(R.id.barge_cabin_ll)
-    LinearLayout barge_cabin_Ll;
+    @Bind(R.id.recyclerview)
+    RecyclerView recyclerView;
+    @Bind(R.id.add_barge_cabin_iv)
+    ImageView add_barge_cabin_Iv;
 
     private String type;
     private int bargeid = 0;
@@ -79,6 +88,9 @@ public class BargeDetailActivity extends BaseActivity {
     public static final String REFRESH_BARGE_BROADCAST = "com.cimcitech.lyt.activity.bargemanage" +
             ".refresh";
     public List<BargeCabinData> bargeCabinDatas = null;
+    private LinearLayoutManager manager = null;
+    private BargeCabinAdapter adapter;
+    private List<BargeCabinData> data = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -113,23 +125,97 @@ public class BargeDetailActivity extends BaseActivity {
         }
     }
 
-    public void registerBroadcast(){
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(BargeCabinAddActivity.REFRESH_BROADCAST);
-        LocalBroadcastManager.getInstance(BargeDetailActivity.this).registerReceiver(mBroadcastReceiver,intentFilter);
+    public void initAdapter(){
+        manager = new LinearLayoutManager(this);
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(manager);
+
+        adapter = new BargeCabinAdapter(BargeDetailActivity.this, data);
+        recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+        //给List添加点击事件
+        adapter.setOnItemClickListener(new BargeCabinAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent i2 = new Intent(BargeDetailActivity.this,BargeCabinModifyAndDeleteActivity.class);
+                i2.putParcelableArrayListExtra("bargeCabinDatas",(ArrayList<BargeCabinData>) bargeCabinDatas);
+                i2.putExtra("bargeInfo",bargeInfo);
+                startActivity(i2);
+                finish();
+            }
+
+            @Override
+            public void onDeleteBtnClickListener(View view,final int position) {
+                String content = "确认删除该船舱？";
+                new AlertDialog.Builder(BargeDetailActivity.this)
+                        .setMessage(content)
+                        .setCancelable(false)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                                commitDeleteData(position);
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        }).create().show();
+            }
+        });
     }
 
-    public BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if(intent.getAction().equals(BargeCabinAddActivity.REFRESH_BROADCAST)){
+    public void commitDeleteData(int position){
+        mCommittingDialog.show();
+        int bargecabinid = data.get(position).getBargecabinid();
+        OkHttpUtils
+                .post()
+                .url(Config.DELETE_BARGECABIN_URL)
+                .addHeader("Check_Token",Config.TOKEN)
+                .addParams("bargecabinid",bargecabinid + "")
+                .build()
+                .execute(
+                        new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
+                                mCommittingDialog.dismiss();
+                                ToastUtil.showNetError();
+                            }
 
-            }
-        }
-    };
+                            @Override
+                            public void onResponse(String response, int id) {
+                                mCommittingDialog.dismiss();
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    if(jsonObject.getBoolean("success")){
+                                        ToastUtil.showToast(jsonObject.getString("msg"));
+                                        getData();
+                                    }else{
+                                        ToastUtil.showToast(jsonObject.getString("msg"));
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                );
+    }
 
     public void initBargeCabinView( List<BargeCabinData> bargeCabinDatas){
-        if(null != bargeCabinDatas){
+        /*if(null != bargeCabinDatas){
             int size = bargeCabinDatas.size();
             BargeCabinData bcd = null;
             View addView = null;
@@ -151,7 +237,7 @@ public class BargeDetailActivity extends BaseActivity {
                     hatchsize_Tv.setText(bcd.getHatchsize() + "");
                 }
             }
-        }
+        }*/
     }
 
     public void initTitle(){
@@ -165,7 +251,7 @@ public class BargeDetailActivity extends BaseActivity {
     }
 
     @OnClick({R.id.back_iv,R.id.more_tv,R.id.item_edit_barge_tv,R.id.item_edit_bagrgecabin_tv,
-            R.id.item_add_bagrgecabin_tv,R.id.item_delete_tv})
+            R.id.item_add_bagrgecabin_tv,R.id.item_delete_tv,R.id.add_barge_cabin_iv})
     public void onclick(View view) {
         switch (view.getId()){
             case R.id.back_iv:
@@ -174,7 +260,7 @@ public class BargeDetailActivity extends BaseActivity {
             case R.id.more_tv:
                 popup_menu_Ll.setVisibility(View.VISIBLE);
                 break;
-            case R.id.item_add_bagrgecabin_tv://新增船舱
+            case R.id.add_barge_cabin_iv://新增船舱
                 popup_menu_Ll.setVisibility(View.GONE);
                 Intent i = new Intent(BargeDetailActivity.this,BargeCabinAddActivity.class);
                 i.putExtra("bargeid",bargeInfo.getBargeid());
@@ -293,7 +379,12 @@ public class BargeDetailActivity extends BaseActivity {
                         BargeCabinVo bargeCabinVo = GjsonUtil.parseJsonWithGson(response, BargeCabinVo.class);
                         if(bargeCabinVo.isSuccess()){
                             bargeCabinDatas = bargeCabinVo.getData();
-                            initBargeCabinView(bargeCabinDatas);
+                            //initBargeCabinView(bargeCabinDatas);
+                            data.clear();
+                            for(int i = 0 ; i < bargeCabinDatas.size(); i++){
+                                data.add(bargeCabinDatas.get(i));
+                            }
+                            initAdapter();
                         }
                     }
                 });

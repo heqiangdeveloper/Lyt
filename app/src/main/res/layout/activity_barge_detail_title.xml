@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="联系人信息详情"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/fragment_title_text_size"/>
 
             <TextView

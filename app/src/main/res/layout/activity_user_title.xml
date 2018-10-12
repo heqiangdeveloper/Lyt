@@ -46,8 +46,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:layout_marginTop="@dimen/user_fragment_user_name_margin"
-                android:text="我的"
-                android:textColor="@color/white"
+                android:text="@string/tab_my_label"
+                android:textColor="@color/black"
                 android:textSize="@dimen/main_text_size"/>
 
         </LinearLayout>

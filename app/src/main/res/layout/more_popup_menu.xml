@@ -18,7 +18,7 @@
         android:layout_height="40dp"
         android:clickable="true"
         android:paddingLeft="@dimen/more_menu_item_padding"
-        android:text="编辑驳船信息"/>
+        android:text="编辑驳船"/>
     <TextView
         android:drawablePadding="@dimen/more_menu_item_padding"
         android:drawableLeft="@mipmap/delete_48"
@@ -34,6 +34,7 @@
         android:clickable="true"
         android:text="删除驳船"/>
     <TextView
+        android:visibility="gone"
         android:drawablePadding="@dimen/more_menu_item_padding"
         android:drawableLeft="@mipmap/add_bargecabin_48"
         android:gravity="center_vertical"
@@ -48,6 +49,7 @@
         android:paddingLeft="@dimen/more_menu_item_padding"
         android:text="新增船舱"/>
     <TextView
+        android:visibility="gone"
         android:drawablePadding="@dimen/more_menu_item_padding"
         android:drawableLeft="@mipmap/edit48_2"
         android:gravity="center_vertical"

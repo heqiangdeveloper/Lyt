@@ -10,6 +10,13 @@
     <string name="regist_first_id_card_front">身份证正面照片</string>
     <string name="regist_first_id_card_behind">身份证反面照片</string>
     <string name="regist_first_next">下一步</string>
+    <string name="tab_home_label">首页</string>
+    <string name="tab_my_quote_label">我的报价</string>
+    <string name="tab_barge_manage_label">驳船管理</string>
+    <string name="tab_my_label">我的</string>
+    <string name="waitQuote_label">待报价</string>
+    <string name="quoted_label">已报价</string>
+    <string name="sucess_label">已成交</string>
 
     <string name="regist_first_label">个人认证</string>
     <string name="forget_password_title">忘记密码</string>
