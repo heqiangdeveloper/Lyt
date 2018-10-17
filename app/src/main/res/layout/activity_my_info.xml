@@ -117,7 +117,7 @@
         android:gravity="center"
         android:layout_gravity="bottom"
         android:background="@color/colorPrimary"
-        android:textColor="@color/white"
+        android:textColor="@color/title_color"
         android:textSize="@dimen/main_text_size"/>
 
 </android.support.design.widget.CoordinatorLayout>

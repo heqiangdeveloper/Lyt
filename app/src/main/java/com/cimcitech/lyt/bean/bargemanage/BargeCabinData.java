@@ -3,13 +3,14 @@ package com.cimcitech.lyt.bean.bargemanage;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by qianghe on 2018/8/6.
  */
 
-public class BargeCabinData implements Parcelable{
+public class BargeCabinData implements Serializable{
     private int bargecabinid;//船舱id
     private int bargeid;//所属的船舱id
     private int hatchnum;//舱口号
@@ -84,41 +85,41 @@ public class BargeCabinData implements Parcelable{
         this.accountid = accountid;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public BargeCabinData(Parcel source) {
-        hatchsize = source.readFloat();
-        bargecabinid = source.readInt();
-        bargeid = source.readInt();
-        holdcapacity = source.readFloat();
-        hatchnum = source.readInt();
-        updatetime = source.readString();
-        accountid = source.readInt();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeFloat(hatchsize);
-        dest.writeInt(bargecabinid);
-        dest.writeInt(bargeid);
-        dest.writeFloat(holdcapacity);
-        dest.writeInt(hatchnum);
-        dest.writeString(updatetime);
-        dest.writeInt(accountid);
-    }
-
-    public static final Parcelable.Creator<BargeCabinData> CREATOR = new Creator<BargeCabinData>(){
-        @Override
-        public BargeCabinData[] newArray(int size) {
-            return new BargeCabinData[size];
-        }
-
-        @Override
-        public BargeCabinData createFromParcel(Parcel source) {
-            return new BargeCabinData(source);
-        }
-    };
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    public BargeCabinData(Parcel source) {
+//        hatchsize = source.readFloat();
+//        bargecabinid = source.readInt();
+//        bargeid = source.readInt();
+//        holdcapacity = source.readFloat();
+//        hatchnum = source.readInt();
+//        updatetime = source.readString();
+//        accountid = source.readInt();
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeFloat(hatchsize);
+//        dest.writeInt(bargecabinid);
+//        dest.writeInt(bargeid);
+//        dest.writeFloat(holdcapacity);
+//        dest.writeInt(hatchnum);
+//        dest.writeString(updatetime);
+//        dest.writeInt(accountid);
+//    }
+//
+//    public static final Parcelable.Creator<BargeCabinData> CREATOR = new Creator<BargeCabinData>(){
+//        @Override
+//        public BargeCabinData[] newArray(int size) {
+//            return new BargeCabinData[size];
+//        }
+//
+//        @Override
+//        public BargeCabinData createFromParcel(Parcel source) {
+//            return new BargeCabinData(source);
+//        }
+//    };
 }

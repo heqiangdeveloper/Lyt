@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cimcitech.lyt.R;
+import com.cimcitech.lyt.activity.main.ForgetPasswordActivity;
 import com.cimcitech.lyt.activity.main.LoginActivity;
 import com.cimcitech.lyt.utils.ApkUpdateUtil;
 import com.cimcitech.lyt.utils.Config;
@@ -103,7 +104,7 @@ public class SettingsActivity extends AppCompatActivity {
                         }).create().show();
                 break;
             case R.id.modify_psd_tv://修改密码
-                startActivity(new Intent(context, ModifyPasswordActivity.class));
+                startActivity(new Intent(context, ModifyPasswordActivity2.class));
                 break;
             case R.id.cust_agree_tv://用户协议
                 break;

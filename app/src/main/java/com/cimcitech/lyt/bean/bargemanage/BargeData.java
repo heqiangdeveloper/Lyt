@@ -148,12 +148,12 @@ public class BargeData {
         this.total = total;
     }
 
-    public List<BargeInfo> getList() {
-        return list;
-    }
-
     public void setList(List<BargeInfo> list) {
         this.list = list;
+    }
+
+    public List<BargeInfo> getList() {
+        return list;
     }
 
     public int getNavigateFirstPage() {

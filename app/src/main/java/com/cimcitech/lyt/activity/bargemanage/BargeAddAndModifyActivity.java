@@ -150,7 +150,7 @@ public class BargeAddAndModifyActivity extends BaseActivity {
             width_Tv.setText(bargeInfo.getWidth() + "");
             grosston_Tv.setText(bargeInfo.getGrosston() + "");
             deadweightton_Tv.setText(bargeInfo.getDeadweightton() + "");
-            netTon_Tv.setText(bargeInfo.getNetTon() + "");
+            netTon_Tv.setText(bargeInfo.getNetton() + "");
             picture_Tv.setText(getResources().getString(R.string.not_upload));
             shipcertificatepicture_Tv.setText(getResources().getString(R.string.not_upload));
         }

@@ -35,7 +35,6 @@ public class EditValueActivity extends BaseActivity {
         setContentView(R.layout.activity_edit_value);
         ButterKnife.bind(this);
 
-        index = getIntent().getIntExtra("index",-1);
         String title = getIntent().getStringExtra("title");
         String content = getIntent().getStringExtra("content");
         type = getIntent().getStringExtra("type");
@@ -82,7 +81,7 @@ public class EditValueActivity extends BaseActivity {
     public void textChangedAction(){
         if(string_content_Et.getText().toString().trim().length() != 0 ){
             save_Tv.setClickable(true);
-            save_Tv.setTextColor(Color.WHITE);
+            save_Tv.setTextColor(getResources().getColor(R.color.title_color));
         }else{
             save_Tv.setClickable(false);
             save_Tv.setTextColor(Color.GRAY);

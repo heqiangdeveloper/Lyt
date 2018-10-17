@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="dialog_bg">#B3B3B3</color>
     <color name="login_btn_background">#0179D5</color>
     <color name="message_item_devid_color">#F4F4F4</color>
     <color name="colorPrimary">#F8DD78</color>
@@ -19,4 +20,5 @@
     <color name="blueStatus">#1680E2</color>
     <color name="login_off_color">#CCCCCC</color>
     <color name="barge_cabin_item_bg">#F2F2F2</color>
+    <color name="title_color">#000</color>
 </resources>

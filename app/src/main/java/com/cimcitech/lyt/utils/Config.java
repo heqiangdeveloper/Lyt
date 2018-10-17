@@ -63,7 +63,7 @@ public class Config {
 
     //public static final String IP = "http://test.lingyu.com:8081/ly";  //测试
 
-    public static final String IP = "http://10.43.10.186:8081/lyt";  //本机2
+    public static final String IP = "http://10.43.10.162:8081/lyt";  //本机2
 
     //public static final String IP = "http://192.168.2.91:8081/lyt";//本机
 

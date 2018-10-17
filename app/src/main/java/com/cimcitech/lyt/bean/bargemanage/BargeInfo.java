@@ -9,17 +9,17 @@ import java.io.Serializable;
 public class BargeInfo implements Serializable{
     private String bargename;//船名
     private String nationality;//船籍
-    private float deadweightton;//净吨
+    private float deadweightton;//载重吨位
     private float width;//船宽
     private float length;//船长
     private float grosston;//总吨
-    private float netTon;//载重吨位
+    private float netton;//净吨
     private String builttime;//建造时间
     private String createtime;//注册时间
     private int bargeid;
 
     public BargeInfo(String bargename, String nationality, float deadweightton, float width,float
-            netTon, float length, float grosston, String builttime, String createtime, int bargeid) {
+            netton, float length, float grosston, String builttime, String createtime, int bargeid) {
         this.bargename = bargename;
         this.nationality = nationality;
         this.deadweightton = deadweightton;
@@ -29,15 +29,15 @@ public class BargeInfo implements Serializable{
         this.builttime = builttime;
         this.createtime = createtime;
         this.bargeid = bargeid;
-        this.netTon = netTon;
+        this.netton = netton;
     }
 
-    public float getNetTon() {
-        return netTon;
+    public float getNetton() {
+        return netton;
     }
 
-    public void setNetTon(float netTon) {
-        this.netTon = netTon;
+    public void setNetton(float netton) {
+        this.netton = netton;
     }
 
     public int getBargeid() {

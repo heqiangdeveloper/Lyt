@@ -87,7 +87,7 @@ public class BargeDetailActivity extends BaseActivity {
     //向BargeManageFragment发送广播，通知其更新数据
     public static final String REFRESH_BARGE_BROADCAST = "com.cimcitech.lyt.activity.bargemanage" +
             ".refresh";
-    public List<BargeCabinData> bargeCabinDatas = null;
+    //public List<BargeCabinData> bargeCabinDatas = new ArrayList<BargeCabinData>();
     private LinearLayoutManager manager = null;
     private BargeCabinAdapter adapter;
     private List<BargeCabinData> data = new ArrayList<>();
@@ -119,7 +119,7 @@ public class BargeDetailActivity extends BaseActivity {
             width_Tv.setText(bargeInfo.getWidth() + "");
             grosston_Tv.setText(bargeInfo.getGrosston() + "");
             deadweightTon_Tv.setText(bargeInfo.getDeadweightton() + "");
-            netTon_Tv.setText(bargeInfo.getNetTon() + "");
+            netTon_Tv.setText(bargeInfo.getNetton() + "");
             picture_Tv.setText(getResources().getString(R.string.not_upload));
             shipcertificatepicture_Tv.setText(getResources().getString(R.string.not_upload));
         }
@@ -147,8 +147,10 @@ public class BargeDetailActivity extends BaseActivity {
         adapter.setOnItemClickListener(new BargeCabinAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent i2 = new Intent(BargeDetailActivity.this,BargeCabinModifyAndDeleteActivity.class);
-                i2.putParcelableArrayListExtra("bargeCabinDatas",(ArrayList<BargeCabinData>) bargeCabinDatas);
+                Intent i2 = new Intent(BargeDetailActivity.this,BargeCabinModifyActivity.class);
+                //i2.putParcelableArrayListExtra("bargeCabinDatas",(ArrayList<BargeCabinData>)
+                 //       bargeCabinDatas);
+                i2.putExtra("bargeCabinData",data.get(position));
                 i2.putExtra("bargeInfo",bargeInfo);
                 startActivity(i2);
                 finish();
@@ -272,18 +274,12 @@ public class BargeDetailActivity extends BaseActivity {
                 popup_menu_Ll.setVisibility(View.GONE);
                 Intent i3 = new Intent(BargeDetailActivity.this,BargeAddAndModifyActivity.class);
                 i3.putExtra("bargeInfo",bargeInfo);
+                //i3.putParcelableArrayListExtra("bargeCabinDatas",(ArrayList<BargeCabinData>)
+                //    bargeCabinDatas);
                 //i.putParcelableArrayListExtra("bargeCabinDatas",(ArrayList<BargeCabinData>)
                 //    bargeCabinDatas);
                 i3.putExtra("type","edit");
                 startActivity(i3);
-                finish();
-                break;
-            case R.id.item_edit_bagrgecabin_tv://编辑船舱信息
-                popup_menu_Ll.setVisibility(View.GONE);
-                Intent i2 = new Intent(BargeDetailActivity.this,BargeCabinModifyAndDeleteActivity.class);
-                i2.putParcelableArrayListExtra("bargeCabinDatas",(ArrayList<BargeCabinData>) bargeCabinDatas);
-                i2.putExtra("bargeInfo",bargeInfo);
-                startActivity(i2);
                 finish();
                 break;
             case R.id.item_delete_tv://删除驳船
@@ -378,12 +374,14 @@ public class BargeDetailActivity extends BaseActivity {
                         mLoading.dismiss();
                         BargeCabinVo bargeCabinVo = GjsonUtil.parseJsonWithGson(response, BargeCabinVo.class);
                         if(bargeCabinVo.isSuccess()){
-                            bargeCabinDatas = bargeCabinVo.getData();
                             //initBargeCabinView(bargeCabinDatas);
                             data.clear();
-                            for(int i = 0 ; i < bargeCabinDatas.size(); i++){
-                                data.add(bargeCabinDatas.get(i));
+                            for(int i = 0 ; i < bargeCabinVo.getData().size(); i++){
+                                data.add(bargeCabinVo.getData().get(i));
                             }
+                            initAdapter();
+                        }else{
+                            data.clear();
                             initAdapter();
                         }
                     }

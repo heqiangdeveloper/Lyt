@@ -400,7 +400,7 @@
         android:background="@color/colorPrimary"
         android:text="提交"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:textColor="@color/title_color"
         android:textSize="14sp" />
     <!--more-->
     <LinearLayout

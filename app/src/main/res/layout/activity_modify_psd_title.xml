@@ -35,16 +35,15 @@
                 android:layout_centerVertical="true"
                 android:paddingLeft="10dip"
                 android:paddingRight="10dip"
-                android:src="@mipmap/ic_back_new" />
+                android:src="@mipmap/ic_back_new_black" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="密码修改"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:textSize="@dimen/main_text_size" />
+                android:textColor="@color/title_color"
+                android:textSize="@dimen/fragment_title_text_size" />
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>

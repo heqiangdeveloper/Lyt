@@ -3,7 +3,7 @@
     android:id="@+id/dialog_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/dialog_bg"
               android:orientation="vertical"
     android:gravity="center_vertical|center">
 
@@ -24,6 +24,6 @@
         android:layout_height="wrap_content"
         android:text="登录中"
         android:textSize="18sp"
-        android:textColor="@color/white" />
+        android:textColor="@color/colorPrimary" />
 
 </LinearLayout>

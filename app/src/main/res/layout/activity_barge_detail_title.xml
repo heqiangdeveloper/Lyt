@@ -35,7 +35,7 @@
                 android:fitsSystemWindows="true"
                 android:paddingLeft="10dip"
                 android:paddingRight="10dip"
-                android:src="@mipmap/ic_back_new"/>
+                android:src="@mipmap/ic_back_new_black"/>
 
             <TextView
                 android:id="@+id/titleName_tv"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="联系人信息详情"
-                android:textColor="@color/black"
+                android:textColor="@color/title_color"
                 android:textSize="@dimen/fragment_title_text_size"/>
 
             <TextView
@@ -56,7 +56,7 @@
                 android:gravity="center_vertical"
                 android:paddingRight="10dip"
                 android:text="●●●"
-                android:textColor="@color/white"
+                android:textColor="@color/title_color"
                 android:textSize="6sp"/>
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>

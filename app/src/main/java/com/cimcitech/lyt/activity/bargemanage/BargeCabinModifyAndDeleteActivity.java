@@ -87,7 +87,7 @@ public class BargeCabinModifyAndDeleteActivity extends BaseActivity {
         initTitle();
         initPopupMenu();
 
-        bargeCabinDatas = getIntent().getParcelableArrayListExtra("bargeCabinDatas");
+        //bargeCabinDatas = getIntent().getParcelableArrayListExtra("bargeCabinDatas");
         bargeInfo = (BargeInfo) getIntent().getSerializableExtra("bargeInfo");
         initView(bargeCabinDatas);
     }
