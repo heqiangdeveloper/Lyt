@@ -5,142 +5,103 @@ package com.cimcitech.lyt.bean.quoteprice;
  */
 
 public class WaitQuoteListBean {
-    private int accountid;
-    private String aimcity;
-    private String aimport;
-    private int amount;
-    private String arrivaltime;
-    private int billsid;
-    private int checkuserid;
-    private String comments;
-    private String createtime;
-    private int istakespellcabin;
-    private String startingcity;
-    private String startingport;
-    private String startingtime;
-    private int transportid;
-    private int transporttype;
+    /*
+    *  {
+        "effectivedate": "2018-10-01 12:11:10",
+        "fstatus": "1",
+        "invaliddate": "2018-12-18 12:11:10",
+        "issueUserName": "雷丰林",
+        "issuetime": "2018-10-12",
+        "issueuserid": 5,
+        "remark": "后天发布",
+        "transportreqid": 2,
+        "updatUserName": "雷丰林",
+        "updatetime": "2018-10-12",
+        "updateuserid": 5
+      }
+     */
+    private String effectivedate;
+    private String fstatus;
+    private String invaliddate;
+    private String issueUserName;
+    private String issuetime;
+    private int issueuserid;
+    private String remark;
+    private int transportreqid;
+    private String updatUserName;
     private String updatetime;
-    private String variety;
+    private int updateuserid;
 
-    public int getAccountid() {
-        return accountid;
+    public String getEffectivedate() {
+        return effectivedate;
     }
 
-    public void setAccountid(int accountid) {
-        this.accountid = accountid;
+    public void setEffectivedate(String effectivedate) {
+        this.effectivedate = effectivedate;
     }
 
-    public String getAimcity() {
-        return aimcity;
+    public String getFstatus() {
+        return fstatus;
     }
 
-    public void setAimcity(String aimcity) {
-        this.aimcity = aimcity;
+    public void setFstatus(String fstatus) {
+        this.fstatus = fstatus;
     }
 
-    public String getAimport() {
-        return aimport;
+    public String getInvaliddate() {
+        return invaliddate;
     }
 
-    public void setAimport(String aimport) {
-        this.aimport = aimport;
+    public void setInvaliddate(String invaliddate) {
+        this.invaliddate = invaliddate;
     }
 
-    public int getAmount() {
-        return amount;
+    public String getIssueUserName() {
+        return issueUserName;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setIssueUserName(String issueUserName) {
+        this.issueUserName = issueUserName;
     }
 
-    public String getArrivaltime() {
-        return arrivaltime;
+    public String getIssuetime() {
+        return issuetime;
     }
 
-    public void setArrivaltime(String arrivaltime) {
-        this.arrivaltime = arrivaltime;
+    public void setIssuetime(String issuetime) {
+        this.issuetime = issuetime;
     }
 
-    public int getBillsid() {
-        return billsid;
+    public int getIssueuserid() {
+        return issueuserid;
     }
 
-    public void setBillsid(int billsid) {
-        this.billsid = billsid;
+    public void setIssueuserid(int issueuserid) {
+        this.issueuserid = issueuserid;
     }
 
-    public int getCheckuserid() {
-        return checkuserid;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setCheckuserid(int checkuserid) {
-        this.checkuserid = checkuserid;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
-    public String getComments() {
-        return comments;
+    public int getTransportreqid() {
+        return transportreqid;
     }
 
-    public void setComments(String comments) {
-        this.comments = comments;
+    public void setTransportreqid(int transportreqid) {
+        this.transportreqid = transportreqid;
     }
 
-    public String getCreatetime() {
-        return createtime;
+    public String getUpdatUserName() {
+        return updatUserName;
     }
 
-    public void setCreatetime(String createtime) {
-        this.createtime = createtime;
-    }
-
-    public int getIstakespellcabin() {
-        return istakespellcabin;
-    }
-
-    public void setIstakespellcabin(int istakespellcabin) {
-        this.istakespellcabin = istakespellcabin;
-    }
-
-    public String getStartingcity() {
-        return startingcity;
-    }
-
-    public void setStartingcity(String startingcity) {
-        this.startingcity = startingcity;
-    }
-
-    public String getStartingport() {
-        return startingport;
-    }
-
-    public void setStartingport(String startingport) {
-        this.startingport = startingport;
-    }
-
-    public String getStartingtime() {
-        return startingtime;
-    }
-
-    public void setStartingtime(String startingtime) {
-        this.startingtime = startingtime;
-    }
-
-    public int getTransportid() {
-        return transportid;
-    }
-
-    public void setTransportid(int transportid) {
-        this.transportid = transportid;
-    }
-
-    public int getTransporttype() {
-        return transporttype;
-    }
-
-    public void setTransporttype(int transporttype) {
-        this.transporttype = transporttype;
+    public void setUpdatUserName(String updatUserName) {
+        this.updatUserName = updatUserName;
     }
 
     public String getUpdatetime() {
@@ -151,11 +112,11 @@ public class WaitQuoteListBean {
         this.updatetime = updatetime;
     }
 
-    public String getVariety() {
-        return variety;
+    public int getUpdateuserid() {
+        return updateuserid;
     }
 
-    public void setVariety(String variety) {
-        this.variety = variety;
+    public void setUpdateuserid(int updateuserid) {
+        this.updateuserid = updateuserid;
     }
 }

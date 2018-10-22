@@ -102,17 +102,17 @@ public class QuotePriceFragment extends Fragment {
     @OnClick({R.id.waitQuote_ll,R.id.quoted_ll,R.id.sucess_ll})
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.waitQuote_ll:
+            case R.id.waitQuote_ll://待报价
                 setVisible(waitQuote_Vw);
                 flag = 0;
                 updateData();
                 break;
-            case R.id.quoted_ll:
+            case R.id.quoted_ll://已报价
                 setVisible(quoted_Vw);
                 flag = 1;
                 updateData();
                 break;
-            case R.id.sucess_ll:
+            case R.id.sucess_ll://已成交
                 setVisible(sucess_Vw);
                 flag = 2;
                 updateData();
@@ -222,9 +222,9 @@ public class QuotePriceFragment extends Fragment {
             @Override
             public void onItemClick(View view, int position) {
                 WaitQuoteListBean listBean = (WaitQuoteListBean) adapter.getAll().get(position);
-//                Intent intent = new Intent(getActivity(), IntentionTrackDetailActivity.class);
-//                intent.putExtra("opportId", listBean.getOpportid());
-//                startActivity(intent);
+                Intent intent = new Intent(getActivity(), WaitQuoteDetailActivity.class);
+                intent.putExtra("transportreqid", listBean.getTransportreqid());
+                startActivity(intent);
             }
 
             @Override
@@ -256,11 +256,11 @@ public class QuotePriceFragment extends Fragment {
     }
 
     public void getWaitQuoteData() {
-        WaitQuoteReq.TranSportBean tranSportBean = new WaitQuoteReq.TranSportBean("","",pageNum,10,"");
-        String json = new Gson().toJson(new WaitQuoteReq(tranSportBean));
+        WaitQuoteReq req = new WaitQuoteReq(pageNum,10,"");
+        String json = new Gson().toJson(req);
         OkHttpUtils
                 .postString()
-                .url(Config.QUERY_WAIT_QUOTE_URL)
+                .url(Config.QUERY_QUOTE_MAIN_URL)
                 .addHeader("Check_Token", Config.TOKEN)
                 .content(json)
                 .mediaType(MediaType.parse("application/json; charset=utf-8"))
@@ -306,53 +306,53 @@ public class QuotePriceFragment extends Fragment {
     }
 
     public void getAlreadyQuoteData() {
-        WaitQuoteReq.TranSportBean tranSportBean = new WaitQuoteReq.TranSportBean("","",pageNum,10,"");
-        String json = new Gson().toJson(new WaitQuoteReq(tranSportBean));
-        OkHttpUtils
-                .postString()
-                .url(Config.QUERY_ALREADY_QUOTE_URL)
-                .addHeader("Check_Token", Config.TOKEN)
-                .content(json)
-                .mediaType(MediaType.parse("application/json; charset=utf-8"))
-                .build()
-                .execute(
-                        new StringCallback() {
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                if(null != swipeRefreshLayout)
-                                    swipeRefreshLayout.setRefreshing(false);
-                                ToastUtil.showNetError();
-                            }
-
-                            @Override
-                            public void onResponse(String response, int id) {
-                                waitQuoteVo = GjsonUtil.parseJsonWithGson(response, WaitQuoteVo.class);
-                                if(null != waitQuoteVo){
-                                    if(waitQuoteVo.isSuccess()){
-                                        if(waitQuoteVo.getData().getList() != null &&
-                                                waitQuoteVo.getData().getList().size() > 0){
-                                            for(int i = 0 ; i < waitQuoteVo.getData().getList().size(); i++){
-                                                data.add(waitQuoteVo.getData().getList().get(i));
-                                            }
-                                        }
-                                        if (waitQuoteVo.getData().isHasNextPage()) {
-                                            adapter.setNotMoreData(false);
-                                        } else {
-                                            adapter.setNotMoreData(true);
-                                        }
-                                        adapter.notifyDataSetChanged();
-                                        if(null != swipeRefreshLayout)
-                                            swipeRefreshLayout.setRefreshing(false);
-                                        adapter.notifyItemRemoved(adapter.getItemCount());
-                                    }
-                                } else {
-                                    adapter.notifyDataSetChanged();
-                                    if(null != swipeRefreshLayout)
-                                        swipeRefreshLayout.setRefreshing(false);
-                                }
-                            }
-                        }
-                );
+//        WaitQuoteReq.TranSportBean tranSportBean = new WaitQuoteReq.TranSportBean("","",pageNum,10,"");
+//        String json = new Gson().toJson(new WaitQuoteReq(tranSportBean));
+//        OkHttpUtils
+//                .postString()
+//                .url(Config.QUERY_ALREADY_QUOTE_URL)
+//                .addHeader("Check_Token", Config.TOKEN)
+//                .content(json)
+//                .mediaType(MediaType.parse("application/json; charset=utf-8"))
+//                .build()
+//                .execute(
+//                        new StringCallback() {
+//                            @Override
+//                            public void onError(Call call, Exception e, int id) {
+//                                if(null != swipeRefreshLayout)
+//                                    swipeRefreshLayout.setRefreshing(false);
+//                                ToastUtil.showNetError();
+//                            }
+//
+//                            @Override
+//                            public void onResponse(String response, int id) {
+//                                waitQuoteVo = GjsonUtil.parseJsonWithGson(response, WaitQuoteVo.class);
+//                                if(null != waitQuoteVo){
+//                                    if(waitQuoteVo.isSuccess()){
+//                                        if(waitQuoteVo.getData().getList() != null &&
+//                                                waitQuoteVo.getData().getList().size() > 0){
+//                                            for(int i = 0 ; i < waitQuoteVo.getData().getList().size(); i++){
+//                                                data.add(waitQuoteVo.getData().getList().get(i));
+//                                            }
+//                                        }
+//                                        if (waitQuoteVo.getData().isHasNextPage()) {
+//                                            adapter.setNotMoreData(false);
+//                                        } else {
+//                                            adapter.setNotMoreData(true);
+//                                        }
+//                                        adapter.notifyDataSetChanged();
+//                                        if(null != swipeRefreshLayout)
+//                                            swipeRefreshLayout.setRefreshing(false);
+//                                        adapter.notifyItemRemoved(adapter.getItemCount());
+//                                    }
+//                                } else {
+//                                    adapter.notifyDataSetChanged();
+//                                    if(null != swipeRefreshLayout)
+//                                        swipeRefreshLayout.setRefreshing(false);
+//                                }
+//                            }
+//                        }
+//                );
     }
 
     public void getSuccessQuoteData() {

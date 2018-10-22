@@ -379,11 +379,10 @@ public class BargeDetailActivity extends BaseActivity {
                             for(int i = 0 ; i < bargeCabinVo.getData().size(); i++){
                                 data.add(bargeCabinVo.getData().get(i));
                             }
-                            initAdapter();
                         }else{
                             data.clear();
-                            initAdapter();
                         }
+                        initAdapter();
                     }
                 });
     }

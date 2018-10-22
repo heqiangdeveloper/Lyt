@@ -91,22 +91,16 @@ public class WaitQuoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 });
             }
             final WaitQuoteListBean item = data.get(position);
-            String startCity = item.getStartingcity();
-            String startPort = item.getStartingport();
-            String aimCity = item.getAimcity();
-            String aimPort = item.getAimport();
-            String variety = item.getVariety();
-            int istakespellcabin = item.getIstakespellcabin();
-            int amount = item.getAmount();
-            String createTime = item.getCreatetime();
-            String comments = item.getComments();
-            ((ItemViewHolder) holder).start_port_Tv.setText(startCity + startPort);
-            ((ItemViewHolder) holder).aim_port_Tv.setText(aimCity + aimPort);
-            ((ItemViewHolder) holder).variety_Tv.setText(variety);
-            ((ItemViewHolder) holder).istakespellcabin_Tv.setText(istakespellcabin == 0 ? "接受拼舱" : "不接受拼舱");
-            ((ItemViewHolder) holder).amount_Tv.setText(amount + "吨");
-            ((ItemViewHolder) holder).createtime_Tv.setText(createTime);
-            ((ItemViewHolder) holder).comments_Tv.setText(comments);
+            String issueUserName = item.getIssueUserName();
+            String effectivedate = item.getEffectivedate();
+            String invaliddate = item.getInvaliddate();
+            String fstatus = item.getFstatus();
+            String remark = item.getRemark();
+            ((ItemViewHolder) holder).issueUserName_Tv.setText(issueUserName);
+            ((ItemViewHolder) holder).effectivedate_Tv.setText(effectivedate);
+            ((ItemViewHolder) holder).invaliddate_Tv.setText(invaliddate);
+            ((ItemViewHolder) holder).fstatus_Tv.setText(fstatus);
+            ((ItemViewHolder) holder).remark_Tv.setText(remark);
         }
     }
 
@@ -127,18 +121,15 @@ public class WaitQuoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     static class ItemViewHolder extends RecyclerView.ViewHolder {
-        TextView start_port_Tv,aim_port_Tv,variety_Tv,istakespellcabin_Tv,amount_Tv,
-                createtime_Tv,comments_Tv;
+        TextView issueUserName_Tv,fstatus_Tv,effectivedate_Tv,invaliddate_Tv,remark_Tv;
 
         public ItemViewHolder(View view) {
             super(view);
-            start_port_Tv = view.findViewById(R.id.start_port_tv);
-            aim_port_Tv = view.findViewById(R.id.aim_port_tv);
-            variety_Tv = view.findViewById(R.id.variety_tv);
-            istakespellcabin_Tv = view.findViewById(R.id.istakespellcabin_tv);
-            amount_Tv = view.findViewById(R.id.amount_tv);
-            createtime_Tv = view.findViewById(R.id.createtime_tv);
-            comments_Tv = view.findViewById(R.id.comments_tv);
+            issueUserName_Tv = view.findViewById(R.id.issueUserName_tv);
+            fstatus_Tv = view.findViewById(R.id.fstatus_tv);
+            effectivedate_Tv = view.findViewById(R.id.effectivedate_tv);
+            invaliddate_Tv = view.findViewById(R.id.invaliddate_tv);
+            remark_Tv = view.findViewById(R.id.remark_tv);
         }
     }
 

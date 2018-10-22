@@ -17,6 +17,8 @@
     <string name="waitQuote_label">待报价</string>
     <string name="quoted_label">已报价</string>
     <string name="sucess_label">已成交</string>
+    <string name="start_quote_label">我要报价</string>
+    <string name="ask_start_quote_label">确认要报价吗？</string>
 
     <string name="regist_first_label">个人认证</string>
     <string name="forget_password_title">忘记密码</string>

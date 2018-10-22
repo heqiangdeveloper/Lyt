@@ -63,7 +63,7 @@ public class Config {
 
     //public static final String IP = "http://test.lingyu.com:8081/ly";  //测试
 
-    public static final String IP = "http://10.43.10.162:8081/lyt";  //本机2
+    public static final String IP = "http://10.43.10.62:8081/lyt";  //本机2
 
     //public static final String IP = "http://192.168.2.91:8081/lyt";//本机
 
@@ -112,4 +112,10 @@ public class Config {
 
     //查询我的已报价信息
     public static final String QUERY_ALREADY_QUOTE_URL  = IP + "/transport/pageListTranSportBoat";
+
+    //查询所有已发布的需求
+    public static final String QUERY_QUOTE_MAIN_URL  = IP + "/bargeQuoteMain/pageQuoteMain";
+
+    //查询指定需求的明细信息
+    public static final String QUERY_QUOTE_DETAIL_URL  = IP + "/quoteDetail/queryQuoteDetail";
 }

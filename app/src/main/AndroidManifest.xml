@@ -251,6 +251,9 @@
         <activity android:name=".activity.user.MyInfoActivity"
                   android:launchMode="singleTask">
         </activity>
+        <activity android:name=".activity.quoteprice.WaitQuoteDetailActivity"
+                  android:launchMode="singleTask">
+        </activity>
     </application>
 
 </manifest>
