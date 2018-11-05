@@ -3,6 +3,7 @@ package com.cimcitech.lyt.utils;
 import android.support.v4.app.Fragment;
 
 import com.cimcitech.lyt.activity.bargemanage.BargeManageFragment;
+import com.cimcitech.lyt.activity.message.MessageFragment;
 import com.cimcitech.lyt.activity.quoteprice.QuotePriceFragment;
 import com.cimcitech.lyt.activity.home.HomeFragment;
 import com.cimcitech.lyt.activity.user.UserFragment;
@@ -14,7 +15,7 @@ import com.cimcitech.lyt.activity.user.UserFragment;
 public class DataGenerator {
     public static Fragment[] getFragments() {
         Fragment fragments[] = new Fragment[5];
-        fragments[0] = new HomeFragment();//首页
+        fragments[0] = new MessageFragment();//首页
         //fragments[1] = new HomeFragment();//
         fragments[1] = new QuotePriceFragment();//交易大厅
         fragments[2] = new BargeManageFragment();//驳船管理

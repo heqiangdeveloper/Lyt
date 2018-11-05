@@ -254,6 +254,18 @@
         <activity android:name=".activity.quoteprice.WaitQuoteDetailActivity"
                   android:launchMode="singleTask">
         </activity>
+        <activity android:name=".activity.quoteprice.AlreadyQuoteDetailActivity"
+                  android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".activity.quoteprice.SuccessQuoteDetailActivity"
+                  android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".activity.quoteprice.StartToQuoteActivity"
+                  android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".activity.message.MessageDetailActivity"
+                  android:launchMode="singleTask">
+        </activity>
     </application>
 
 </manifest>

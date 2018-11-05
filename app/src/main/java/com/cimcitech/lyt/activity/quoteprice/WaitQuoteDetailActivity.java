@@ -71,6 +71,8 @@ public class WaitQuoteDetailActivity extends AppCompatActivity {
     private WaitQuoteDetailAdapter adapter;
     private List<WaitQuoteDetailListBean> data = new ArrayList<>();
     private WaitQuoteDetailVo waitQuoteDetailVo = null;
+    private int transportreqid = -1;
+    private int detailid = -2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,7 +81,7 @@ public class WaitQuoteDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initTitle();
         initPopupMenu();
-        int transportreqid = getIntent().getIntExtra("transportreqid",-1);
+        transportreqid = getIntent().getIntExtra("transportreqid",-1);
         getData(transportreqid);
     }
 
@@ -134,7 +136,8 @@ public class WaitQuoteDetailActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();
-                               // commitDeleteData(position);
+                                detailid = data.get(position).getDetailid();
+                                startToQuote();
                             }
                         })
                         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -145,6 +148,15 @@ public class WaitQuoteDetailActivity extends AppCompatActivity {
                         }).create().show();
             }
         });
+    }
+
+    private void startToQuote(){
+        //进入报价页面
+        Intent intent = new Intent(WaitQuoteDetailActivity.this,StartToQuoteActivity.class);
+        intent.putExtra("transportreqid",transportreqid);
+        intent.putExtra("detailid",detailid);
+        startActivity(intent);
+        finish();
     }
 
     private void getData(int transportreqid){
@@ -179,7 +191,6 @@ public class WaitQuoteDetailActivity extends AppCompatActivity {
                                         }
                                     }
                                     initAdapter();
-                                    //adapter.notifyDataSetChanged();
                                 }
                             }
                     );

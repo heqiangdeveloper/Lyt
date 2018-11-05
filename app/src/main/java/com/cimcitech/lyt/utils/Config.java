@@ -3,6 +3,7 @@ package com.cimcitech.lyt.utils;
 import android.content.Context;
 
 import com.cimcitech.lyt.bean.login.Loginback;
+import com.cimcitech.lyt.bean.quoteprice.WaitQuoteVo;
 
 /**
  * Created by cimcitech on 2017/7/31.
@@ -13,6 +14,8 @@ public class Config {
     public static boolean isNeedVerify = false;
 
     public static  String  USERNAME = "";//用户登录名
+
+    public static WaitQuoteVo Config_WaitQuoteVo;
 
     public static int ACCOUNTID = 0;
 
@@ -63,9 +66,9 @@ public class Config {
 
     //public static final String IP = "http://test.lingyu.com:8081/ly";  //测试
 
-    public static final String IP = "http://10.43.10.62:8081/lyt";  //本机2
+    //public static final String IP = "http://10.43.10.234:8081/lyt";  //本机2
 
-    //public static final String IP = "http://192.168.2.91:8081/lyt";//本机
+    public static final String IP = "http://192.168.1.112:8081/lyt";//本机
 
     //public static final String IP = "http://113.106.81.132:8086/tdsh";//zxq
 
@@ -113,9 +116,18 @@ public class Config {
     //查询我的已报价信息
     public static final String QUERY_ALREADY_QUOTE_URL  = IP + "/transport/pageListTranSportBoat";
 
-    //查询所有已发布的需求
-    public static final String QUERY_QUOTE_MAIN_URL  = IP + "/bargeQuoteMain/pageQuoteMain";
+    //驳船用户查询所有已发布的需求
+    public static final String QUERY_QUOTE_MAIN_URL  = IP + "/bargeQuote/pageQuoteMain";
 
     //查询指定需求的明细信息
     public static final String QUERY_QUOTE_DETAIL_URL  = IP + "/quoteDetail/queryQuoteDetail";
+
+    //驳船用户报价
+    public static final String START_QUOTE_URL  = IP + "/bargeQuote/addBargeQuote";
+
+    //查看我的所有报价信息
+    public static final String QUERY_MY_QUOTE_URL  = IP + "/bargeQuote/pageQueryBargeQuote";
+
+    //查看我的所有已成交的信息
+    public static final String QUERY_MY_SUCCESS_URL  = IP + "/bargeQuote/pageBargeQuoteByDeal";
 }

@@ -52,11 +52,12 @@ public class MyReceiver extends BroadcastReceiver {
                 processCustomMessage(context, bundle);
 
             } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
-                Log.d(TAG, "[MyReceiver] 接收到推送下来的通知");
+                Log.d("jg", "[MyReceiver] 接收到推送下来的通知");
                 int notifactionId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID);
-                Log.d(TAG, "[MyReceiver] 接收到推送下来的通知的ID: " + notifactionId);
+                Log.d("jg", "[MyReceiver] 接收到推送下来的通知的ID: " + notifactionId);
 
                 String content = bundle.getString(JPushInterface.EXTRA_ALERT);
+                Log.d("mymsg", "通知:" + content);
                 //将新消息写入数据库中
                 addMsg(context, content);
 

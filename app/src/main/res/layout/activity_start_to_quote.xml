@@ -1,0 +1,126 @@
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/activity_barge_detail_title"/>
+
+    <LinearLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dip"
+            android:background="@color/white"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="8dip"
+                android:text="@string/choose_barge_label"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/main_text_size" />
+            <TextView
+                android:id="@+id/choose_barge_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dip"
+                android:gravity="right"
+                android:text=""
+                android:textColor="@color/black"
+                android:drawableRight="@mipmap/more_icon"
+                android:drawablePadding="@dimen/barge_change_drawable_padding"
+                android:textSize="@dimen/main_text_size" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dip"
+            android:background="@color/white"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="8dip"
+                android:text="@string/quote_ton_label"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/main_text_size" />
+            <TextView
+                android:id="@+id/quote_ton_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dip"
+                android:gravity="right"
+                android:text="12"
+                android:textColor="@color/black"
+                android:drawableRight="@mipmap/more_icon"
+                android:drawablePadding="@dimen/barge_change_drawable_padding"
+                android:textSize="@dimen/main_text_size" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dip"
+            android:background="@color/white"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="8dip"
+                android:text="@string/quote_price_label"
+                android:textColor="@color/black_33"
+                android:textSize="@dimen/main_text_size" />
+            <TextView
+                android:id="@+id/quote_price_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dip"
+                android:gravity="right"
+                android:text="123123"
+                android:textColor="@color/black"
+                android:drawableRight="@mipmap/more_icon"
+                android:drawablePadding="@dimen/barge_change_drawable_padding"
+                android:textSize="@dimen/main_text_size" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/commit_tv"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_gravity="end|bottom"
+        android:background="@color/colorPrimary"
+        android:text="提交"
+        android:gravity="center"
+        android:textColor="@color/title_color"
+        android:textSize="14sp" />
+    <!--more-->
+    <LinearLayout
+        android:id="@+id/popup_menu_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_marginRight="10dp"
+        android:elevation="20dp"
+        android:visibility="gone"
+        android:translationZ="20dp"
+        android:background="@color/white"
+        android:layout_gravity="end|top">
+        <include layout="@layout/more_popup_menu"/>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

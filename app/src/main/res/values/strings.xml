@@ -19,6 +19,7 @@
     <string name="sucess_label">已成交</string>
     <string name="start_quote_label">我要报价</string>
     <string name="ask_start_quote_label">确认要报价吗？</string>
+    <string name="my_start_quote_label">我的报价</string>
 
     <string name="regist_first_label">个人认证</string>
     <string name="forget_password_title">忘记密码</string>
@@ -56,6 +57,12 @@
     <string name="holdcapacity">舱容</string>
     <string name="hatchsize">舱口尺寸</string>
 
+    <string name="choose_barge_label">选择驳船</string>
+    <string name="quote_ton_label">报价吨位</string>
+    <string name="quote_price_label">报价价格</string>
+    <string name="already_quote_price_label">报价时间</string>
+    <string name="success_quote_price_label">成交时间</string>
+    <string name="already_quote_detail_title">报价详情</string>
     <string name="createtime">注册时间</string>
     <string name="bargename">船名</string>
     <string name="nationality">船籍</string>

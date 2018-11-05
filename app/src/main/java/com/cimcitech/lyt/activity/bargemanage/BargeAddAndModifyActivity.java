@@ -262,7 +262,7 @@ public class BargeAddAndModifyActivity extends BaseActivity {
 
     public void startEditActivity(int i ,String type,String title,String content,int requestCode){
         Intent intent2 = new Intent(BargeAddAndModifyActivity.this, EditValueActivity.class);
-        intent2.putExtra("index",i);
+        //intent2.putExtra("index",i);
         intent2.putExtra("type",type);
         intent2.putExtra("title",title);
         intent2.putExtra("content",content);

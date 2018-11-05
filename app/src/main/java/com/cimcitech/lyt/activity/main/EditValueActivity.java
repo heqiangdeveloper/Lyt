@@ -28,7 +28,6 @@ public class EditValueActivity extends BaseActivity {
 
     public static final String [] TYPE = {"num","str","int"};
     public String type = "";
-    public int index;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,7 +100,6 @@ public class EditValueActivity extends BaseActivity {
         switch (view.getId()){
             case R.id.save_tv:
                 Intent i = new Intent();
-                i.putExtra("index",index);
                 i.putExtra("result",string_content_Et.getText().toString().trim());
                 setResult(RESULT_OK,i);
                 finish();
