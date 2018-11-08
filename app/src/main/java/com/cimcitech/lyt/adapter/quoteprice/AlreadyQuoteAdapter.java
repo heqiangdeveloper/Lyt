@@ -100,7 +100,7 @@ public class AlreadyQuoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             ((ItemViewHolder) holder).issueUserName_Tv.setText(issueUserName);
             ((ItemViewHolder) holder).effectivedate_Tv.setText(effectivedate);
             ((ItemViewHolder) holder).invaliddate_Tv.setText(invaliddate);
-            ((ItemViewHolder) holder).fstatus_Tv.setText(fstatus);
+            ((ItemViewHolder) holder).fstatus_Tv.setText(fstatus.equals("1") ? "已发布" : "未发布");
             ((ItemViewHolder) holder).remark_Tv.setText(remark);
         }
     }

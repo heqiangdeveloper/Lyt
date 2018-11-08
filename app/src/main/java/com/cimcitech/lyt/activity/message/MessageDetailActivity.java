@@ -45,6 +45,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
+import okhttp3.MediaType;
 
 
 public class MessageDetailActivity extends BaseActivity {
@@ -107,8 +108,7 @@ public class MessageDetailActivity extends BaseActivity {
                 effectivedate_Tv.setText(null != bargeQuoteMain.getEffectivedate() ? bargeQuoteMain.getEffectivedate() : "");
                 invaliddate_Tv.setText(null != bargeQuoteMain.getInvaliddate() ? bargeQuoteMain.getInvaliddate() : "");
                 remark_Tv.setText(null != bargeQuoteMain.getRemark() ?  bargeQuoteMain.getRemark() : "");
-                choose_barge_Tv.setText(null != successQuoteListBean.getBargeName() ?
-                        successQuoteListBean.getBargeName():"");
+                choose_barge_Tv.setText(null != successQuoteListBean.getBargeName() ? successQuoteListBean.getBargeName():"");
                 quote_ton_Tv.setText(successQuoteListBean.getTon() + "");
                 quote_price_Tv.setText(successQuoteListBean.getQuote() + "");
                 quote_price_time_Tv.setText(successQuoteListBean.getQuotetime() + "");
@@ -144,6 +144,8 @@ public class MessageDetailActivity extends BaseActivity {
                 .postString()
                 .url(Config.QUERY_MY_SUCCESS_URL)
                 .addHeader("Check_Token",Config.TOKEN)
+                .content(json)
+                .mediaType(MediaType.parse("application/json; charset=utf-8"))
                 .build()
                 .execute(new StringCallback() {
                     @Override

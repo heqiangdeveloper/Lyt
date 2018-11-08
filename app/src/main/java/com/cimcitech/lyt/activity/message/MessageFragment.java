@@ -120,8 +120,9 @@ public class MessageFragment extends Fragment {
                         int id = data.get(position).getId();
                         int opened = data.get(position).getOpened();
                         changeUnReadMsgAndOpened(id,opened);
-//                        Intent intent = new Intent(getActivity(), DispatchActivity.class);
-//                        getActivity().startActivity(intent);
+                        Intent intent = new Intent(getActivity(), MessageDetailActivity.class);
+                        intent.putExtra("quoteid",6);
+                        getActivity().startActivity(intent);
                     }
 
                     @Override

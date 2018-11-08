@@ -68,7 +68,7 @@ public class Config {
 
     //public static final String IP = "http://10.43.10.234:8081/lyt";  //本机2
 
-    public static final String IP = "http://192.168.1.112:8081/lyt";//本机
+    public static final String IP = "http://192.168.1.108:8081/lyt";//本机
 
     //public static final String IP = "http://113.106.81.132:8086/tdsh";//zxq
 

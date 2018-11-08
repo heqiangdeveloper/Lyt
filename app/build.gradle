@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
@@ -7,8 +11,8 @@ android {
         applicationId "com.cimcitech.lyt"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 101
+        versionName "1.01"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         ndk {
@@ -31,6 +35,21 @@ android {
         main {
             jniLibs.srcDirs = ['libs']
         }
+    }
+
+    //在apk文件后边生成版本号信息
+    //like: v1.01_vcode101_release_com.cimcitech.lyt_20181106.apk
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.each {
+                output -> output.outputFile = new File(output.outputFile.parent,
+                                "v${defaultConfig.versionName}_"
+                                +"vcode${defaultConfig.versionCode}_"
+                                + buildType.name
+                                +"_${defaultConfig.applicationId }"
+                                + "_${releaseTime()}.apk"
+                                );
+            }
     }
 }
 
